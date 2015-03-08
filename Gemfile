@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sass'
 gem 'bower-rails'
+gem 'angular-rails-templates'
 gem 'foreman'
 
 group :development, :test do
