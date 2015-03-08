@@ -45,6 +45,9 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :production, :staging do
@@ -52,3 +55,5 @@ group :production, :staging do
   gem 'rails_stdout_logging'
   gem 'rails_serve_static_assets'
 end
+
+ruby '2.2.0'
