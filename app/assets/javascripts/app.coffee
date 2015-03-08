@@ -40,6 +40,8 @@ controllers.controller('EmployeesCtrl', ['$scope', '$routeParams', '$location',
       keywords = $routeParams.keywords.toLowerCase()
       $scope.employees = employees.filter (employee)-> employee.first_name.toLowerCase().indexOf(keywords) != -1 ||
         employee.last_name.toLowerCase().indexOf(keywords) != -1
+      if $scope.employees.length == 0
+        $scope.employees = null
     else
       $scope.employees = employees
 ])
