@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sass'
 gem 'bower-rails'
+gem 'foreman'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -44,4 +45,10 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :production, :staging do
+  gem 'rails_12factor'
+  gem 'rails_stdout_logging'
+  gem 'rails_serve_static_assets'
 end
