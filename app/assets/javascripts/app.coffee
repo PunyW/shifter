@@ -1,0 +1,2 @@
+shifter = angular.module('shifter', [
+])
