@@ -1,5 +1,4 @@
-controllers = angular.module('controllers')
-controllers.controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource',
+angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource',
   ($scope, $routeParams, $location, $resource)->
     $scope.search = (keywords)-> $location.path('/').search('keywords', keywords)
     Employee = $resource('/employees/:employeeId', { employeeId: "@id", format: 'json' })
