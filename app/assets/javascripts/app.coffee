@@ -2,7 +2,9 @@ shifter = angular.module('shifter', [
   'templates',
   'ngRoute',
   'ngResource',
-  'controllers'
+  'controllers',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
 
 shifter.config(['$routeProvider',

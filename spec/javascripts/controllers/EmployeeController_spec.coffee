@@ -3,6 +3,7 @@ describe 'EmployeeCtrl', ->
   ctrl        = null
   routeParams = null
   httpBackend = null
+  flash       = null
   employeeId  = 87
 
   fakeEmployee =
@@ -12,11 +13,12 @@ describe 'EmployeeCtrl', ->
     work_percent: 1
 
   setupController = (employeeExists=true)->
-    inject(($location, $routeParams, $rootScope, $httpBackend, $controller)->
+    inject(($location, $routeParams, $rootScope, $httpBackend, $controller, _flash_)->
       scope       = $rootScope.$new()
       location    = $location
       httpBackend = $httpBackend
       routeParams = $routeParams
+      flash       = _flash_
       routeParams.employeeId = employeeId
 
       request = new RegExp("\/employees/#{employeeId}")
@@ -48,3 +50,4 @@ describe 'EmployeeCtrl', ->
       it 'loads the given employee', ->
         httpBackend.flush()
         expect(scope.employee).toBe(null)
+        expect(flash.error).toBe("There is no employee with ID #{employeeId}")
