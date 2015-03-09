@@ -1,6 +1,7 @@
 shifter = angular.module('shifter', [
   'templates',
   'ngRoute',
+  'ngResource',
   'controllers'
 ])
 
@@ -32,8 +33,8 @@ employees = [
 ]
 
 controllers = angular.module('controllers', [])
-controllers.controller('EmployeesCtrl', ['$scope', '$routeParams', '$location',
-  ($scope, $routeParams, $location)->
+controllers.controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource',
+  ($scope, $routeParams, $location, $resource)->
     $scope.search = (keywords)-> $location.path('/').search('keywords', keywords)
 
     if $routeParams.keywords
