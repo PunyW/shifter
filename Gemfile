@@ -42,6 +42,8 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'teaspoon'
+  gem 'phantomjs'
 
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -49,6 +51,10 @@ group :development, :test do
 
   gem 'guard'
   gem 'guard-rspec'
+end
+
+group :test do
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :production, :staging do

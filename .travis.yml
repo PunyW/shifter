@@ -1,0 +1,27 @@
+language: ruby
+cache:
+  bundler: true
+  directories:
+  - vendor/assets/bower_components
+rvm:
+- 2.2.0
+addons:
+  postgresql: '9.3'
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: C0+e86XFI5I2KhDh9vqv+pE4IPfOI0SHkEa9bXdl4lyNUP9YoGuNC+BblgpffjnkfWAij6HBxbiDDQP5SW6KqIKlhhqqWDSmRVUuhXlam8uWfa6PrBdVxfcqGJ9Kppu0TrcqS/RxqkpXEua94UeguYh0MCrPg27a9Ct0sb066Zw=
+  app: blazing-shifter
+  run: "rake db:migrate"
+  on:
+    repo: PunyW/shifter

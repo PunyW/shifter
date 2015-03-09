@@ -3,7 +3,12 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 
-Rails.application.config.assets.precompile += %w( bootstrap/glyphicons-halflings-regular.woff2 )
+Rails.application.config.assets.precompile += %w(
+  bootstrap/glyphicons-halflings-regular.woff2
+  teaspoon.css
+  teaspoon-teaspoon.js
+  teaspoon-jasmine.js
+)
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
