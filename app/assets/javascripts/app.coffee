@@ -7,8 +7,14 @@ shifter = angular.module('shifter', [
   'angular-flash.flash-alert-directive'
 ])
 
-shifter.config(['$routeProvider',
-  ($routeProvider)->
+shifter.config(['$routeProvider', 'flashProvider',
+  ($routeProvider, flashProvider)->
+
+    flashProvider.errorClassnames.push("alert-danger")
+    flashProvider.warnClassnames.push("alert-warning")
+    flashProvider.infoClassnames.push("alert-info")
+    flashProvider.successClassnames.push("alert-success")
+
     $routeProvider
       .when('/',
         templateUrl: 'employees/index.html'
