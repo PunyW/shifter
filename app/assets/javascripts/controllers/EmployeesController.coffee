@@ -7,4 +7,6 @@ angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routePara
       Employee.query(keywords: $routeParams.keywords, (results)-> $scope.employees = results)
     else
       $scope.employees = null
+
+    $scope.view = (employeeId)-> $location.path("/employees/#{employeeId}")
 ])

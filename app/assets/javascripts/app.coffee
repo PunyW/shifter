@@ -11,10 +11,10 @@ shifter.config(['$routeProvider',
   ($routeProvider)->
     $routeProvider
       .when('/',
-        templateUrl: 'index.html'
+        templateUrl: 'employees/index.html'
         controller: 'EmployeesCtrl'
       ).when('/employees/:employeeId',
-        templateUrl: 'show.html'
+        templateUrl: 'employees/show.html'
         controller: 'EmployeeCtrl'
       )
 ])
