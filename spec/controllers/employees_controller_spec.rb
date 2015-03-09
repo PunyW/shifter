@@ -36,9 +36,32 @@ RSpec.describe EmployeesController, type: :controller do
         expect(results.size).to eq 0
       end
     end
+  end
 
-    def extract_name
-      ->(object) { object['first_name'] }
+  describe 'show' do
+    before do
+      xhr :get, :show, format: :json, id: employee_id
     end
+
+    subject(:results) { JSON.parse(response.body) }
+
+    context 'when the employee exists' do
+      let(:employee) { FactoryGirl.create(:employee) }
+      let(:employee_id) { employee.id }
+
+      it { expect(response.status).to eq 200 }
+      it { expect(results['id']).to eq employee.id }
+      it { expect(results['first_name']).to eq employee.first_name }
+      it { expect(results['last_name']).to eq employee.last_name }
+    end
+
+    context "when the employee doesn't exist" do
+      let(:employee_id) { -1000 }
+      it { expect(response.status).to eq(404) }
+    end
+  end
+
+  def extract_name
+    ->(object) { object['first_name'] }
   end
 end
