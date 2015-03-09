@@ -19,6 +19,14 @@ describe 'EmployeeCtrl', ->
       routeParams = $routeParams
       routeParams.employeeId = employeeId
 
+      request = new RegExp("\/employees/#{employeeId}")
+      results = if employeeExists
+        [200, fakeEmployee]
+      else
+        [404]
+
+      httpBackend.expectGET(request).respond(results[0], results[1])
+
       ctrl        = $controller('EmployeeCtrl', $scope: scope)
     )
 
@@ -27,3 +35,16 @@ describe 'EmployeeCtrl', ->
   afterEach ->
     httpBackend.verifyNoOutstandingExpectation()
     httpBackend.verifyNoOutstandingRequest()
+
+  describe 'controller initialization', ->
+    describe 'employee is found', ->
+      beforeEach(setupController())
+      it 'loads the given employee', ->
+        httpBackend.flush()
+        expect(scope.employee).toEqualData(fakeEmployee)
+
+    describe 'employee is not found', ->
+      beforeEach(setupController(false))
+      it 'loads the given employee', ->
+        httpBackend.flush()
+        expect(scope.employee).toBe(null)
