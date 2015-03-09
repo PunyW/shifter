@@ -21,6 +21,6 @@ feature 'Looking for employees', js: true do
     click_on 'Search'
 
     puts(page)
-    expect(page).to have_no_content 'Search results'
+    expect(page).to have_content 'No employees found'
   end
 end
