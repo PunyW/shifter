@@ -1,0 +1,46 @@
+<aside class="flash row">
+    <article flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3">
+        {{flash.message}}
+    </article>
+</aside>
+
+<form class="form-horizontal" role="form" class="edit-user">
+    <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+        <label
+            for="first_name"
+            class="col-md-2 control-label col-md-offset-2">
+            First name
+        </label>
+        <div class="col-md-5">
+            <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Insert first name" ng-model="employee.first_name">
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+        <label
+                for="last_name"
+                class="col-md-2 control-label col-md-offset-2">
+            Last name
+        </label>
+        <div class="col-md-5">
+            <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Insert last name" ng-model="employee.last_name">
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+        <label
+                for="work_percent"
+                class="col-md-2 control-label col-md-offset-2">
+            Work percent
+        </label>
+        <div class="col-md-5">
+            <input type="number" id="work_percent" name="work_percent" class="form-control" placeholder="100" ng-model="employee.work_percent">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn btn-primary" ng-click="save()">Save</button>
+        </div>
+    </div>
+</form>

@@ -5,9 +5,9 @@ feature 'Employee', js: true do
     visit '/'
     click_on 'New employee...'
 
-    fill_in first_name, with: 'Ganoes'
-    fill_in last_name, with: 'Paron'
-    fill_in work_percent, with: 100
+    fill_in 'first_name', with: 'Ganoes'
+    fill_in 'last_name', with: 'Paron'
+    fill_in 'work_percent', with: 100
 
     click_on 'Save'
 
@@ -24,11 +24,14 @@ feature 'Employee', js: true do
       click_on 'Search'
       click_on 'Ganoes'
     end
+
     scenario 'edit' do
       click_on 'Edit'
 
-      fill_in first_name, with: 'Felician'
-      fill_in work_percent, with: 75
+      fill_in 'first_name', with: 'Felician'
+      fill_in 'work_percent', with: 75
+
+      click_on 'Save'
 
       expect(page).to have_content('Felician Paron')
       expect(page).to have_content('75%')
@@ -36,11 +39,9 @@ feature 'Employee', js: true do
     end
 
     scenario 'delete' do
-      click_on 'Felician'
-
       click_on 'Delete'
 
-      expect(Employee.find_by_first_name('Felician')).to eq nil
+      expect(Employee.find_by_last_name('Paron')).to eq nil
     end
   end
 end

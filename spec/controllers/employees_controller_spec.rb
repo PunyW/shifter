@@ -73,7 +73,7 @@ RSpec.describe EmployeesController, type: :controller do
     it { expect(response.status).to eq 201 }
     it { expect(Employee.last.first_name).to eq 'Kalam' }
     it { expect(Employee.last.last_name).to eq 'Mekhar' }
-    it { expect(Employee.last.work_percent).to eq 100 }
+    it { expect(Employee.last.work_percent).to eq 1 }
   end
 
   describe 'update' do
@@ -90,7 +90,7 @@ RSpec.describe EmployeesController, type: :controller do
     it { expect(response.status).to eq 204 }
     it { expect(employee.first_name).to eq 'Ganoes' }
     it { expect(employee.last_name).to eq 'Paron' }
-    it { expect(employee.work_percent).to eq 75 }
+    it { expect(employee.work_percent).to eq 0.75 }
   end
 
   describe 'destroy' do
