@@ -38,9 +38,11 @@ gem 'foreman'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-its'
   gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'database_cleaner'
+
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'teaspoon'
   gem 'phantomjs'
