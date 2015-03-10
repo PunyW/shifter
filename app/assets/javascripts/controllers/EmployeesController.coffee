@@ -9,4 +9,7 @@ angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routePara
       $scope.employees = null
 
     $scope.view = (employeeId)-> $location.path("/employees/#{employeeId}")
+    $scope.newEmployee = -> $location.path('/employees/new')
+    $scope.edit = -> (employeeId)-> $location.path("/employees/#{employeeId}")
+
 ])

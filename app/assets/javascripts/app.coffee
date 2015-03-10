@@ -19,8 +19,14 @@ shifter.config(['$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: 'employees/index.html'
         controller: 'EmployeesCtrl'
+      ).when('/employees/new',
+        templateUrl: 'employees/form.html'
+        controller: 'EmployeeCtrl'
       ).when('/employees/:employeeId',
         templateUrl: 'employees/show.html'
+        controller: 'EmployeeCtrl'
+      ).when('/employees/:employeeId/edit',
+        templateUrl: 'employees/form.html',
         controller: 'EmployeeCtrl'
       )
 ])
