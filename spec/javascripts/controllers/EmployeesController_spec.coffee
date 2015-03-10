@@ -7,6 +7,14 @@ describe 'EmployeesCtrl', ->
 
   httpBackend = null
 
+  employees = [
+    {
+      id: 1
+      first_name: 'Kalam'
+      last_name: 'Mekhar'
+    }
+  ]
+
   setupController = (keywords, results)->
     inject(($location, $routeParams, $rootScope, $resource, $httpBackend, $controller)->
       scope       = $rootScope.$new()
@@ -21,6 +29,9 @@ describe 'EmployeesCtrl', ->
       if results
         request = new RegExp("\/employees.*keywords=#{keywords}")
         httpBackend.expectGET(request).respond(results)
+      else
+        request = new RegExp('\/employees')
+        httpBackend.expectGET(request).respond(employees)
 
       ctrl        = $controller('EmployeesCtrl',
         $scope:scope
@@ -28,7 +39,6 @@ describe 'EmployeesCtrl', ->
     )
 
   beforeEach(module('shifter'))
-  beforeEach(setupController())
 
   afterEach ->
     httpBackend.verifyNoOutstandingExpectation()
@@ -36,11 +46,12 @@ describe 'EmployeesCtrl', ->
 
   describe 'controller initialization', ->
     describe 'when no keywords present', ->
-      beforeEach(setupController())
+      beforeEach ->
+        setupController()
+        httpBackend.flush()
 
       it 'is empty by default', ->
-
-        expect(scope.employees).toEqualData(null)
+        expect(scope.employees).toEqualData(employees)
 
     describe 'with keywords', ->
       keywords = 'kalam'
@@ -63,6 +74,7 @@ describe 'EmployeesCtrl', ->
     describe 'search()', ->
       beforeEach ->
         setupController()
+        httpBackend.flush()
 
       it 'redirects to itself with a keyword param', ->
         keywords = 'foo'

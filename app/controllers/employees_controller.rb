@@ -1,33 +1,44 @@
 class EmployeesController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  before_action :set_employee, only: [:show, :update, :destroy]
 
   def index
     @employees = if params[:keywords]
                    Employee.where('first_name ilike ? or last_name ilike ?', "%#{params[:keywords]}%", "%#{params[:keywords]}%")
                  else
-                   []
+                   Employee.all
                  end
   end
 
   def show
-    @employee = Employee.find(params[:id])
   end
 
   def create
-    @employee = Employee.new(params.require(:employee).permit(:first_name, :last_name, :work_percent))
-    @employee.save
-    render 'show', status: 201
+    @employee = Employee.new(employee_params)
+    if @employee.save
+      render 'show', status: 201
+    else
+      render @employee.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    employee = Employee.find(params[:id])
-    employee.update_attributes(params.require(:employee).permit(:first_name, :last_name, :work_percent))
+    @employee.update_attributes(employee_params)
     head :no_content
   end
 
   def destroy
-    employee = Employee.find(params[:id])
-    employee.destroy
+    @employee.destroy
     head :no_content
+  end
+
+  private
+
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
+
+  def employee_params
+    params.require(:employee).permit(:first_name, :last_name, :work_percent)
   end
 end
