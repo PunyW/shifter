@@ -18,7 +18,7 @@ class EmployeesController < ApplicationController
     if @employee.save
       render 'show', status: 201
     else
-      render @employee.errors, status: :unprocessable_entity
+      render json: @employee.errors, status: :unprocessable_entity
     end
   end
 

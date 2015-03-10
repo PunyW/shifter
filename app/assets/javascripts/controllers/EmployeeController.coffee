@@ -27,7 +27,9 @@ angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParam
         $location.path('/')
 
     $scope.save = ->
-      onError = (_httpResponse)-> flash.error = "Something went wrong"
+      onError = (_httpResponse_)->
+        $scope.errors = _httpResponse_.data
+        flash.error = "Something went wrong"
       if $scope.employee.id
         $scope.employee.$save(
           ( ()-> $location.path("/employees/#{$scope.employee.id}") ),

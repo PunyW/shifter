@@ -1,19 +1,41 @@
 require 'rails_helper'
 
 feature 'Employee', js: true do
-  scenario 'create new' do
-    visit '/'
-    click_on 'New employee...'
+  feature 'form' do
+    before do
+      visit '/'
+      click_on 'New employee...'
+    end
 
-    fill_in 'first_name', with: 'Ganoes'
-    fill_in 'last_name', with: 'Paron'
-    fill_in 'work_percent', with: 100
+    scenario 'invalid parameters' do
+      fill_in 'first_name', with: ' '
+      fill_in 'last_name', with: ' '
+      fill_in 'work_percent', with: '101'
 
-    click_on 'Save'
+      expect(page).to have_content('First name is required')
+      expect(page).to have_content('Last name is required')
+      expect(page).to have_content('Enter number between 0 and 100')
 
-    expect(page).to have_content('Ganoes Paron')
-    expect(page).to have_content('100%')
+      click_on 'Cancel'
+      expect(page).to have_content('New employee...')
+    end
+  end
 
+  feature 'new' do
+    before do
+      visit '/'
+      click_on 'New employee...'
+    end
+    scenario 'create with valid parameters' do
+      fill_in 'first_name', with: 'Ganoes'
+      fill_in 'last_name', with: 'Paron'
+      fill_in 'work_percent', with: 100
+
+      click_on 'Save'
+
+      expect(page).to have_content('Ganoes Paron')
+      expect(page).to have_content('100%')
+    end
   end
 
   feature 'existing' do

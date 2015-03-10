@@ -12,6 +12,11 @@ describe 'EmployeesCtrl', ->
       id: 1
       first_name: 'Kalam'
       last_name: 'Mekhar'
+    },
+    {
+      id: 2
+      first_name: 'Ganoes'
+      last_name: 'Paron'
     }
   ]
 
