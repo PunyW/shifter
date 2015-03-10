@@ -92,7 +92,7 @@ describe 'EmployeeCtrl', ->
         scope.employee.work_percent = updateEmployee.work_percent
         scope.save()
         httpBackend.flush()
-        expect(location.path()).toBe("employees/#{updateEmployee.id}")
+        expect(location.path()).toBe("/employees/#{scope.employee.id}")
 
     describe 'delete', ->
       beforeEach ->
