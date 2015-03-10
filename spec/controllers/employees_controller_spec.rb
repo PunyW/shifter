@@ -61,6 +61,48 @@ RSpec.describe EmployeesController, type: :controller do
     end
   end
 
+  describe 'create' do
+    before do
+      xhr :post, :create, format: :json, employee: {
+          first_name: 'Kalam',
+          last_name: 'Mekhar',
+          work_percent: 100
+        }
+    end
+
+    it { expect(response.status).to eq 201 }
+    it { expect(Employee.last.first_name).to eq 'Kalam' }
+    it { expect(Employee.last.last_name).to eq 'Mekhar' }
+    it { expect(Employee.last.work_percent).to eq 100 }
+  end
+
+  describe 'update' do
+    let(:employee) { FactoryGirl.create(:employee) }
+    before do
+      xhr :put, :update, format: :json, id: employee.id, employee: {
+          first_name: 'Ganoes',
+          last_name: 'Paron',
+          work_percent: 75
+        }
+      employee.reload
+    end
+
+    it { expect(response.status).to eq 204 }
+    it { expect(employee.first_name).to eq 'Ganoes' }
+    it { expect(employee.last_name).to eq 'Paron' }
+    it { expect(employee.work_percent).to eq 75 }
+  end
+
+  describe 'destroy' do
+    let(:employee) { FactoryGirl.create(:employee) }
+    before do
+      xhr :delete, :destroy, format: :json, id: employee.id
+    end
+
+    it { expect(response.status).to eq 204 }
+    it { expect(Employee.find_by_id(employee.id)).to eq nil }
+  end
+
   def extract_name
     ->(object) { object['first_name'] }
   end
