@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope '/api' do
     resources :employees, only: [:index, :show, :create, :update, :destroy]
+    post 'sessions/new', to: 'sessions#create'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

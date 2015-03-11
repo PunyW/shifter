@@ -4,4 +4,11 @@ FactoryGirl.define do
     last_name 'Mekhar'
     work_percent 100
   end
+
+  factory :user do
+    username 'admin'
+    password 'Admin123'
+    password_confirmation 'Admin123'
+    email 'admin@test.com'
+  end
 end
