@@ -26,6 +26,8 @@ module Shifter
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components', 'bootstrap-sass-official', 'assets', 'fonts')
 
-    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+    config.assets.precompile.push(Proc.new do |path|
+        File.extname(path).in? %w(.html .erb .haml .png .gif .jpg .jpeg .svg .eot .otf .svc .woff .ttf)
+      end)
   end
 end

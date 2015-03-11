@@ -1,8 +1,0 @@
-asset 'angular'
-asset 'angular-route'
-asset 'angular-resource'
-asset 'angular-mocks'
-asset 'bootstrap-sass-official'
-asset 'angular-flash'
-asset 'angular-cookies'
-# vim: ft=ruby

@@ -32,7 +32,6 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'sass'
-gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'foreman'
 gem 'active_model_serializers'
