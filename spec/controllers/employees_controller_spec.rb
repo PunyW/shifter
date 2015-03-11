@@ -90,35 +90,65 @@ RSpec.describe EmployeesController, type: :controller do
   end
 
   describe 'create' do
-    before do
-      xhr :post, :create, format: :json, employee: {
-          first_name: 'Kalam',
-          last_name: 'Mekhar',
-          work_percent: 100
-        }
+    describe 'with valid attributes' do
+      before do
+        xhr :post, :create, format: :json, employee: {
+            first_name: 'Kalam',
+            last_name: 'Mekhar',
+            work_percent: 100
+          }
+      end
+
+      it { expect(response.status).to eq 201 }
+      it { expect(Employee.last.first_name).to eq 'Kalam' }
+      it { expect(Employee.last.last_name).to eq 'Mekhar' }
+      it { expect(Employee.last.work_percent).to eq 1 }
     end
 
-    it { expect(response.status).to eq 201 }
-    it { expect(Employee.last.first_name).to eq 'Kalam' }
-    it { expect(Employee.last.last_name).to eq 'Mekhar' }
-    it { expect(Employee.last.work_percent).to eq 1 }
+    describe 'with invalid attributes' do
+      before do
+        xhr :post, :create, format: :json, employee: {
+            first_name: ' ',
+            last_name: 'Mekhar',
+            work_percent: 100
+          }
+      end
+
+      it { expect(response.status).to eq 422 }
+      it { expect(Employee.all.size).to eq 0 }
+    end
   end
 
   describe 'update' do
     let(:employee) { FactoryGirl.create(:employee) }
-    before do
-      xhr :put, :update, format: :json, id: employee.id, employee: {
-          first_name: 'Ganoes',
-          last_name: 'Paron',
-          work_percent: 75
-        }
-      employee.reload
+
+    describe 'with valid attributes' do
+      before do
+        xhr :put, :update, format: :json, id: employee.id, employee: {
+            first_name: 'Ganoes',
+            last_name: 'Paron',
+            work_percent: 75
+          }
+        employee.reload
+      end
+
+      it { expect(response.status).to eq 204 }
+      it { expect(employee.first_name).to eq 'Ganoes' }
+      it { expect(employee.last_name).to eq 'Paron' }
+      it { expect(employee.work_percent).to eq 0.75 }
     end
 
-    it { expect(response.status).to eq 204 }
-    it { expect(employee.first_name).to eq 'Ganoes' }
-    it { expect(employee.last_name).to eq 'Paron' }
-    it { expect(employee.work_percent).to eq 0.75 }
+    describe 'with invalid attributes' do
+      before do
+        xhr :put, :update, format: :json, id: employee.id, employee: {
+            last_name: ' '
+          }
+        employee.reload
+      end
+
+      it { expect(response.status).to eq 422 }
+      it { expect(employee.last_name).to eq 'Mekhar' }
+    end
   end
 
   describe 'destroy' do

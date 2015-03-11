@@ -23,8 +23,11 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    @employee.update_attributes(employee_params)
-    head :no_content
+    if @employee.update_attributes(employee_params)
+      head :no_content
+    else
+      render json: @employee.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
