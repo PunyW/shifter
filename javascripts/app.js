@@ -12,10 +12,18 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/hours.html',
                 controller: 'MainCtrl'
             }
-        )
+        ).otherwise({
+                redirectTo: '/'
+            }
+        );
     }
 ]);
 
 app.controller('MainCtrl', function($scope) {
-
+    $scope.hours = [
+        {
+            date: '11.03',
+            hours: 2.5
+        }
+    ]
 });
