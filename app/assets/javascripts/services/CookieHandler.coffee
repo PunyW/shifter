@@ -6,7 +6,7 @@ angular.module('shifter').factory('CookieHandler', ['$cookieStore',
         $cookieStore.put('currentUser', user)
       get: () ->
         $cookieStore.get('currentUser')
-      delete: (user) ->
+      delete: () ->
         $cookieStore.remove('currentUser')
     }
 
