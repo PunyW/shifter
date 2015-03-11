@@ -22,8 +22,16 @@ app.config(['$routeProvider',
 app.controller('MainCtrl', function($scope) {
     $scope.hours = [
         {
-            date: '11.03',
-            hours: 2.5
+            date: '09.03.2015',
+            hours: 4
+        },
+        {
+            date: '10.03.2015',
+            hours: 3
+        },
+        {
+            date: '11.03.2015',
+            hours: 4
         }
     ]
 });
