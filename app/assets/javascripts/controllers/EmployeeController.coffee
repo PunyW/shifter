@@ -1,6 +1,6 @@
 angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParams', '$resource', '$location', 'flash',
   ($scope, $routeParams, $resource, $location, flash)->
-    Employee = $resource('/employees/:employeeId', { employeeId: '@id', format: 'json' },
+    Employee = $resource('/api/employees/:employeeId', { employeeId: '@id', format: 'json' },
       {
         'save':   {method: 'PUT'},
         'create': {method:'POST'}
