@@ -3,10 +3,11 @@ angular.module('shifter').factory('SessionService', ['CookieHandler', '$http', '
     SessionService = {
       login: (authInfo) ->
         $http.post('/api/sessions/new', authInfo)
-        .success( (data) ->
-          CookieHandler.set(data.user)
+        .success( (user) ->
+          CookieHandler.set(user)
           $location.path('/')
         ).error( (data) ->
+          CookieHandler.delete()
           if data.error
             flash.error = data.error
         )
