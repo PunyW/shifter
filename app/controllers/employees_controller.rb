@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :set_employee, only: [:show, :update, :destroy]
+  before_action :signed_in?
 
   def index
     @employees = if params[:keywords]
