@@ -3,7 +3,7 @@ require 'rails_helper'
 include TestUtils
 
 feature 'Employee', js: true do
-  describe 'When logged in' do
+  describe 'logged in' do
     let!(:user) { FactoryGirl.create(:user) }
     before :each do
       sign_in_capybara({ email: user.email, password: 'Admin123'})
@@ -73,6 +73,12 @@ feature 'Employee', js: true do
 
         expect(Employee.find_by_last_name('Paron')).to eq nil
       end
+    end
+  end
+  describe 'logged out', focus: true do
+    scenario 'accessing form' do
+      visit '#/employees/new'
+      
     end
   end
 end

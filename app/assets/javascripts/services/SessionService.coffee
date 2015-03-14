@@ -12,6 +12,8 @@ angular.module('shifter').factory('SessionService', ['CookieHandler', '$http', '
         )
       logout: ->
         CookieHandler.delete()
+      currentUser: ->
+        CookieHandler.get()
     }
 
     return SessionService

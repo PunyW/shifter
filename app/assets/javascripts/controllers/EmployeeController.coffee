@@ -29,6 +29,7 @@ angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParam
     $scope.save = ->
       onError = (_httpResponse_)->
         $scope.errors = _httpResponse_.data
+        console.log(_httpResponse_)
         flash.error = "Something went wrong"
       if $scope.employee.id
         $scope.employee.$save(
