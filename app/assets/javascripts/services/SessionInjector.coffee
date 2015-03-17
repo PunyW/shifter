@@ -3,9 +3,9 @@ angular.module('shifter').factory('SessionInjector', ['CookieHandler',
     return {
       request: (config) ->
         if (CookieHandler.get() != undefined )
-          config.headers['token'] = CookieHandler.get().token
-          config.headers['username'] = CookieHandler.get().username
-
+          user = CookieHandler.get().user
+          config.headers['token'] = user.token
+          config.headers['username'] = user.username
         return config
     }
 ])

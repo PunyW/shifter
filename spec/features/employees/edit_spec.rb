@@ -52,6 +52,7 @@ feature 'Employee', js: true do
         visit '/'
         fill_in 'keywords', with: 'Paron'
         click_on 'Search'
+
         click_on 'Ganoes'
       end
 
