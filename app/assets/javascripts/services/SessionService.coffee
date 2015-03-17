@@ -1,8 +1,8 @@
 angular.module('shifter').factory('SessionService', ['CookieHandler', '$http', 'flash', '$location',
   (CookieHandler, $http, flash, $location) ->
     SessionService = {
-      login: (authInfo) ->
-        $http.post('/api/sessions/new', authInfo)
+      login: (credentials) ->
+        $http.post('/api/sessions/new', credentials)
         .success( (user) ->
           CookieHandler.set(user)
           $location.path('/')
@@ -14,7 +14,13 @@ angular.module('shifter').factory('SessionService', ['CookieHandler', '$http', '
       logout: ->
         CookieHandler.delete()
       currentUser: ->
-        CookieHandler.get()
+        CookieHandler.get().user
+      isAuthenticated: ->
+        !!CookieHandler.get().user
+      isAuthorized: (authorizedRoles) ->
+        if !angular.isArray(authorizedRoles)
+          authorizedRoles = [authorizedRoles]
+        SessionService.isAuthenticated() && authorizedRoles.indexOf(CookieHandler.get().user.user_role) != -1
     }
 
     return SessionService

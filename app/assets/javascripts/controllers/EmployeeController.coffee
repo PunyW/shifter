@@ -30,7 +30,7 @@ angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParam
       onError = (_httpResponse_)->
         $scope.errors = _httpResponse_.data
         console.log(_httpResponse_)
-        flash.error = "Something went wrong"
+        flash.error = "TODO: ERROR MESSAGE EmployeeController.coffee 33"
       if $scope.employee.id
         $scope.employee.$save(
           ( ()-> $location.path("/employees/#{$scope.employee.id}") ),

@@ -1,5 +1,5 @@
-angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource',
-  ($scope, $routeParams, $location, $resource)->
+angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource', 'SessionService'
+  ($scope, $routeParams, $location, $resource, SessionService)->
     $scope.search = (keywords)-> $location.path('/').search('keywords', keywords)
     Employee = $resource('/api/employees/:employeeId', { employeeId: "@id", format: 'json' })
 
@@ -12,4 +12,5 @@ angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routePara
     $scope.newEmployee = -> $location.path('/employees/new')
     $scope.edit = -> (employeeId)-> $location.path("/employees/#{employeeId}")
 
+    $scope.currentUser = SessionService.currentUser()
 ])

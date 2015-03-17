@@ -36,4 +36,18 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider',
     flashProvider.successClassnames.push("alert-success")
 ])
 
+shifter.constant('AUTH_EVENTS', {
+  loginSuccess: 'auth-login-success',
+  loginFailed: 'auth-login-failed',
+  logoutSuccess: 'auth-logout-success',
+  sessionTimeout: 'auth-session-timeout',
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+}).constant('USER_ROLERS', {
+  admin: 'admin',
+  normal: 'normal'
+})
+
+
+
 controllers = angular.module('controllers', [])
