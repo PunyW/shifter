@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   enum user_role: [:normal, :admin]
 
   validates :username, uniqueness: true, length: { in: 3..15 }
-  validates :password, allow_nil: true, length: { in: 8..25 }, format: { with: /\d.*[A-Z]|[A-Z].*\d/,  message: 'has to contain one number and one upper case letter' }
-  validates :email, format: { with: /@/ }, length: { minimum: 4 }
+  validates :password, allow_nil: true, length: { in: 8..25 }, format: { with: /\A\d.*[A-Z]|[A-Z].*\d\z/,  message: 'has to contain one number and one upper case letter' }
+  validates :email, format: { with: /\A*@*\z/ }, length: { minimum: 4 }
 
   def ensure_token
     self.token = generate_token

@@ -6,9 +6,6 @@ angular.module('controllers').controller('SessionsCtrl', ['$scope', '$rootScope'
       ), ->
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed)
 
-    $scope.logout = ->
-      SessionService.logout()
-
     if $location.path() == '/login'
       $scope.visible = true
 ])

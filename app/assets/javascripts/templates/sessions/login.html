@@ -5,14 +5,14 @@
         </article>
     </aside>
 
-    <form novalidate ng-submit="newSession(login_form)">
+    <form name="loginForm" novalidate ng-submit="newSession(credentials)">
         <p>
             <label>Email</label>
-            <input name="email" type="email" ng-model="login_form.email" class="form-control" />
+            <input name="email" type="email" ng-model="credentials.email" class="form-control" />
         </p>
         <p>
             <label>Password</label>
-            <input name="password" type="password" ng-model="login_form.password" class="form-control" />
+            <input name="password" type="password" ng-model="credentials.password" class="form-control" />
         </p>
         <p>
             <input type="submit" name="LoginButton" value="Log in" class="btn btn-primary">

@@ -7,7 +7,8 @@
     "angular-mocks": "~> 1.4",
     "bootstrap-sass-official": "~> 3.3",
     "angular-flash": "~> 0.1.14",
-    "angular-cookies": "~> 1.4"
+    "angular-cookies": "~> 1.4",
+    "autofill-event": "~> 1.0.0"
   },
   "resolutions": {
     "angular": "~> 1.4"
