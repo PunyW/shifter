@@ -1,21 +1,21 @@
-<aside class="flash row">
-    <article flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3">
-        {{flash.message}}
-    </article>
-</aside>
+<div ng-if="visible" ng-controller="SessionsCtrl">
+    <aside class="flash row">
+        <article flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3">
+            {{flash.message}}
+        </article>
+    </aside>
 
-<form novalidate ng-submit="newSession(login_form)">
-    <p>
-        <label>Email</label>
-        <input name="email" type="email" ng-model="login_form.email" class="form-control" />
-    </p>
-    <p>
-        <label>Password</label>
-        <input name="password" type="password" ng-model="login_form.password" class="form-control" />
-    </p>
-    <p>
-        <input type="submit" name="LoginButton" value="Log in" class="btn btn-primary">
-    </p>
-</form>
-
-<button class="btn btn-default" name="LogoutButton" ng-click="logout()">Log out</button>
+    <form novalidate ng-submit="newSession(login_form)">
+        <p>
+            <label>Email</label>
+            <input name="email" type="email" ng-model="login_form.email" class="form-control" />
+        </p>
+        <p>
+            <label>Password</label>
+            <input name="password" type="password" ng-model="login_form.password" class="form-control" />
+        </p>
+        <p>
+            <input type="submit" name="LoginButton" value="Log in" class="btn btn-primary">
+        </p>
+    </form>
+</div>

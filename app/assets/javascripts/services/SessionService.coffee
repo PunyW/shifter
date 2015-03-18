@@ -14,13 +14,14 @@ angular.module('shifter').factory('SessionService', ['CookieHandler', '$http', '
       logout: ->
         CookieHandler.delete()
       currentUser: ->
-        CookieHandler.get().user
-      isAuthenticated: ->
-        !!CookieHandler.get().user
+        if CookieHandler.get()
+          CookieHandler.get().user
       isAuthorized: (authorizedRoles) ->
+        if authorizedRoles == 'ALL'
+          return true
         if !angular.isArray(authorizedRoles)
           authorizedRoles = [authorizedRoles]
-        SessionService.isAuthenticated() && authorizedRoles.indexOf(CookieHandler.get().user.user_role) != -1
+        return SessionService.currentUser() && authorizedRoles.indexOf(CookieHandler.get().user.user_role) != -1
     }
 
     return SessionService
