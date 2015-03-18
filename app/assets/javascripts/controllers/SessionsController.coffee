@@ -6,6 +6,5 @@ angular.module('controllers').controller('SessionsCtrl', ['$scope', '$rootScope'
       ), ->
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed)
 
-    if $location.path() == '/login'
-      $scope.visible = true
+    $scope.visible = true
 ])

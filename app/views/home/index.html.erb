@@ -1,7 +1,7 @@
 <div ng-app="shifter">
-  <div class="container">
+  <div class="container" ng-controller="ApplicationCtrl">
     <div shifter-nav></div>
-    <div login-dialog></div>
+    <div login-dialog ng-if="!isLoginPage"></div>
     <div class="view-container">
       <div ng-view class="view-frame animate-view"></div>
     </div>

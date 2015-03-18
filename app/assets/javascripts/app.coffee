@@ -42,9 +42,12 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         data: {
           authorizedRoles: 'ALL'
         }
-      )
+      ).otherwise('/')
 
-    $httpProvider.interceptors.push('SessionInjector')
+    $httpProvider.interceptors.push(['$injector',
+      ($injector) ->
+        return $injector.get('SessionInjector')
+    ])
 
     flashProvider.errorClassnames.push("alert-danger")
     flashProvider.warnClassnames.push("alert-warning")
@@ -76,7 +79,5 @@ shifter.constant('AUTH_EVENTS', {
   admin: 'admin',
   normal: 'normal'
 })
-
-
 
 controllers = angular.module('controllers', [])
