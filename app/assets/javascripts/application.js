@@ -19,4 +19,5 @@
 //= require angular-cookies/angular-cookies
 //= require angular-rails-templates
 //= require angular-flash/dist/angular-flash
+//= require angular-strap/dist/angular-strap
 //= require_tree .
