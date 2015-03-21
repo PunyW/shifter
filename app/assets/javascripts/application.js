@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require autofill-event/src/autofill-event
-//= require angular/angular
-//= require angular-route/angular-route
-//= require angular-resource/angular-resource
-//= require angular-cookies/angular-cookies
+//= require autofill-event
+//= require angular
+//= require angular-route
+//= require angular-resource
+//= require angular-cookies
 //= require angular-rails-templates
-//= require angular-flash/dist/angular-flash
-//= require angular-strap/dist/angular-strap
+//= require angular-flash
+//= require angular-strap
 //= require_tree .

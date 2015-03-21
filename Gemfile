@@ -36,6 +36,18 @@ gem 'angular-rails-templates'
 gem 'foreman', '= 0.77.0'
 gem 'active_model_serializers'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-sass-official'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-angular-route'
+  gem 'rails-assets-angular-resource'
+  gem 'rails-assets-angular-mocks'
+  gem 'rails-assets-angular-flash'
+  gem 'rails-assets-angular-cookies'
+  gem 'rails-assets-autofill-event'
+  gem 'rails-assets-angular-strap'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-its'

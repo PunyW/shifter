@@ -29,7 +29,7 @@
 # the configuration and use this file as a manifest.
 #
 # For more information: http://github.com/modeset/teaspoon
-#= require angular-mocks/angular-mocks
+#= require angular-mocks
 beforeEach ->
   this.addMatchers
     toEqualData: (expected)-> return angular.equals(this.actual, expected)
