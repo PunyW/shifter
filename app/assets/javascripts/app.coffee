@@ -12,7 +12,7 @@ shifter = angular.module('shifter', [
 shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
   ($routeProvider, $httpProvider, flashProvider, USER_ROLES)->
     $routeProvider
-      .when('/',
+      .when('/employees',
         templateUrl: 'employees/index.html'
         controller: 'EmployeesCtrl'
         data: {
@@ -48,7 +48,7 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         data: {
           authorizedRoles: [USER_ROLES.admin]
         }
-    ).otherwise('/')
+    ).otherwise('/employees')
 
     $httpProvider.interceptors.push(['$injector',
       ($injector) ->

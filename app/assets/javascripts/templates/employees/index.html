@@ -20,7 +20,7 @@
     <ul class="list-unstyled">
         <li ng-repeat="employee in employees">
             <section class="well col-md-6 col-md-offset-3">
-                <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href ng-click="view(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a></h1>
+                <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a></h1>
                 <div class="col-md-6">
                     <button ng-click="edit(employee.id)" class="btn btn-info">Edit</button>
                 </div>

@@ -6,12 +6,7 @@ angular.module('shifter').directive('shifterNav', ['SessionService', 'AUTH_EVENT
       link: (scope) ->
         scope.links = [
           {
-            route: '/?(navbar)?'
-            link: '/#/'
-            text: 'Home'
-          },
-          {
-            route: '/employees'
+            route: 'employees'
             link: '/#/'
             text: 'Employees'
           }
