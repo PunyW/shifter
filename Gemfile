@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'sass'
 gem 'angular-rails-templates'
-gem 'foreman'
+gem 'foreman', '= 0.77.0'
 gem 'active_model_serializers'
 
 group :development, :test do
