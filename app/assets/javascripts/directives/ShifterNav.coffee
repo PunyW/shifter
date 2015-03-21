@@ -1,5 +1,5 @@
-angular.module('shifter').directive('shifterNav', ['SessionService', 'AUTH_EVENTS'
-  (SessionService, AUTH_EVENTS) ->
+angular.module('shifter').directive('shifterNav', ['SessionService', 'AUTH_EVENTS', 'USER_ROLES',
+  (SessionService, AUTH_EVENTS, USER_ROLES) ->
     return {
       restrict: 'A'
       templateUrl: 'navbar.html'
@@ -21,6 +21,11 @@ angular.module('shifter').directive('shifterNav', ['SessionService', 'AUTH_EVENT
           scope.currentUser = SessionService.currentUser()
 
         scope.currentUser = SessionService.currentUser()
+        scope.admin = () ->
+          if scope.currentUser
+            return SessionService.currentUser().user_role == USER_ROLES.admin
+          else
+            false
         scope.logout = () ->
           SessionService.logout()
 
