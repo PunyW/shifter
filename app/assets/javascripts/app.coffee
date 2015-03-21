@@ -42,7 +42,13 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         data: {
           authorizedRoles: 'ALL'
         }
-      ).otherwise('/')
+      ).when('/admin',
+        templateUrl: 'admin/index.html',
+        controller: 'AdminCtrl'
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
+    ).otherwise('/')
 
     $httpProvider.interceptors.push(['$injector',
       ($injector) ->
@@ -54,19 +60,20 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
     flashProvider.infoClassnames.push("alert-info")
     flashProvider.successClassnames.push("alert-success")
 
-]).run(($rootScope, $location, AUTH_EVENTS, SessionService) ->
-  $rootScope.$on('$routeChangeStart', (event, next) ->
-    if next.data
-      authorizedRoles = next.data.authorizedRoles
-      if (!SessionService.isAuthorized(authorizedRoles))
-        event.preventDefault()
-        if (SessionService.currentUser())
-          $rootScope.$broadcast(AUTH_EVENTS.notAuthorized)
-        else
-          $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated)
+]).run(['$rootScope', '$location', 'AUTH_EVENTS', 'SessionService',
+  ($rootScope, $location, AUTH_EVENTS, SessionService) ->
+    $rootScope.$on('$routeChangeStart', (event, next) ->
+      if next.data
+        authorizedRoles = next.data.authorizedRoles
+        if (!SessionService.isAuthorized(authorizedRoles))
+          event.preventDefault()
+          if (SessionService.currentUser())
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthorized)
+          else
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated)
 
-  )
-)
+    )
+])
 
 shifter.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',

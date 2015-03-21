@@ -6,6 +6,7 @@
         <li ng-repeat="link in links" data-match-route="/{{ link.route }}"><a ng-href="{{ link.link }}">{{ link.text }}</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+        <li ng-if="admin()" data-match-route="'/admin"><a ng-href="/#/admin">Admin panel</a></li>
         <li ng-if="currentUser"><a href="" ng-click="logout()">Log out</a></li>
         <li><a></a></li>
     </ul>
