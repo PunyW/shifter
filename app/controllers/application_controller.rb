@@ -18,13 +18,23 @@ class ApplicationController < ActionController::Base
   protected
     helper_method :current_user
     helper_method :signed_in?
+    helper_method :admin_only
+
     def current_user
       @current_user ||= User.find_by(username: request.headers['username'])
     end
 
     def signed_in?
-      @user = User.find_by(username: request.headers['username'])
+      @user = current_user
       if @user && @user.token = request.headers['token']
+        true
+      else
+        render nothing: true, status: 401
+      end
+    end
+
+    def admin_only
+      if signed_in? && current_user.admin?
         true
       else
         render nothing: true, status: 401
