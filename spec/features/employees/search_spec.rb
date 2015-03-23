@@ -10,7 +10,7 @@ feature 'Looking for employees', js: true do
       Employee.create!(first_name: 'Ben', last_name: 'Quick', work_percent: 1)
       Employee.create!(first_name: 'Ganoes', last_name: 'Paron', work_percent: 1)
 
-      visit '/'
+      visit '/#/employees'
     end
 
     scenario 'by default everyone is shown' do

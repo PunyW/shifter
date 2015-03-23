@@ -18,6 +18,12 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         data: {
           authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
         }
+      ).when('/',
+        templateUrl: 'employees/index.html'
+        controller: 'EmployeesCtrl'
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
+        }
       ).when('/employees/new',
         templateUrl: 'employees/form.html'
         controller: 'EmployeeCtrl',
@@ -48,7 +54,7 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         data: {
           authorizedRoles: [USER_ROLES.admin]
         }
-    ).otherwise('/employees')
+    )#.otherwise('/employees')
 
     $httpProvider.interceptors.push(['$injector',
       ($injector) ->
@@ -71,7 +77,6 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized)
           else
             $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated)
-
     )
 ])
 

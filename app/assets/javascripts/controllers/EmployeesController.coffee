@@ -1,6 +1,6 @@
 angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routeParams', '$location', '$resource',
   ($scope, $routeParams, $location, $resource)->
-    $scope.search = (keywords)-> $location.path('/').search('keywords', keywords)
+    $scope.search = (keywords)-> $location.path('/employees').search('keywords', keywords)
     Employee = $resource('/api/employees/:employeeId', { employeeId: "@id", format: 'json' })
 
     if $routeParams.keywords
