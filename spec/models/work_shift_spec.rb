@@ -11,4 +11,29 @@ RSpec.describe WorkShift, type: :model do
     its(:start_time) { should eq '8 am' }
     its(:end_time) { should eq '4 pm' }
   end
+
+  describe 'with invalid name' do
+    subject { WorkShift.create(name: '', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
+    it { should be_invalid }
+  end
+
+  describe 'with invalid description' do
+    subject { WorkShift.create(name: 'Dummy', description: ' ', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
+    it { should be_invalid }
+  end
+
+  describe 'with invalid duration' do
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 0, start_time: '4 am', end_time: '8 pm') }
+    it { should be_invalid }
+  end
+
+  describe 'with invalid start time' do
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: ' ', end_time: '8 pm') }
+    it { should be_invalid }
+  end
+
+  describe 'with invalid end time' do
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: ' ') }
+    it { should be_invalid }
+  end
 end
