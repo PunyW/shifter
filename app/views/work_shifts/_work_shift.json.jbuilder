@@ -1,0 +1,1 @@
+json.(work_shift, :id)
