@@ -1,1 +1,6 @@
-HERE WILL BE ADMIN STUFF, STAY AWAY!
+<div class="col-sm-2 navbar navbar-default sidebar" role="navigation" bs-navbar>
+    <ul class="nav navbar-nav">
+        <li ng-repeat="link in links"><a href ng-click="changeView(link)">{{ link.name }}</a></li>
+    </ul>
+</div>
+<div class="col-sm-10" ng-include="view"></div>

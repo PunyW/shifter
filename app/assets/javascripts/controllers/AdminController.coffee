@@ -1,4 +1,16 @@
 angular.module('controllers').controller('AdminCtrl', ['$scope',
   ($scope) ->
-    console.log('OMG YOU HAS HACKEDS ME ADMIN PANEL!')
+    $scope.links = [
+      {
+        name: 'Manage employees'
+        view: 'admin/employees.html'
+      }
+      {
+        name: 'Manage shifts'
+        view: 'admin/shifts.html'
+      }
+    ]
+
+    $scope.changeView = (link) ->
+      $scope.view = link.view
 ])

@@ -1,13 +1,23 @@
-<div class="navbar navbar-default" role="navigation" bs-navbar>
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#/">Shifter</a>
+<div class="navbar navbar-default" role="navigation" bs-navbar bs-collapse>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" bs-collapse-toggle>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Shifter</a>
+        </div>
+        <div bs-collapse-target>
+            <ul class="nav navbar-nav">
+                <li ng-repeat="link in links" data-match-route="/{{ link.route }}"><a ng-href="{{ link.link }}">{{ link.text }}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="admin()" data-match-route="admin"><a ng-href="/#/admin">Admin panel</a></li>
+                <li ng-if="currentUser"><a href="" ng-click="logout()">Log out</a></li>
+                <li><a></a></li>
+            </ul>
+        </div>
     </div>
-    <ul class="nav navbar-nav">
-        <li ng-repeat="link in links" data-match-route="/{{ link.route }}"><a ng-href="{{ link.link }}">{{ link.text }}</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li ng-if="admin()" data-match-route="admin"><a ng-href="/#/admin">Admin panel</a></li>
-        <li ng-if="currentUser"><a href="" ng-click="logout()">Log out</a></li>
-        <li><a></a></li>
-    </ul>
 </div>
