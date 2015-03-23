@@ -28,7 +28,7 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
         templateUrl: 'employees/form.html'
         controller: 'EmployeeCtrl',
         data: {
-          authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
+          authorizedRoles: [USER_ROLES.admin]
         }
       ).when('/employees/:employeeId',
         templateUrl: 'employees/show.html'
