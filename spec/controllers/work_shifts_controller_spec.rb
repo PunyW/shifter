@@ -28,6 +28,26 @@ RSpec.describe WorkShiftsController, type: :controller do
         end
       end
     end
+
+    describe 'show' do
+      before do
+        xhr :get, :show, format: :json, id: work_shift.id
+      end
+
+      subject(:results) { JSON.parse(response.body) }
+
+      context 'when the shift exists' do
+        let(:work_shift) { FactoryGirl.create(:work_shift) }
+
+        it { expect(response.status).to eq 200 }
+        it { expect(results['id']).to eq work_shift.id }
+        it { expect(results['name']).to eq work_shift.name }
+        it { expect(results['description']).to eq work_shift.description }
+        it { expect(results['duration']).to eq work_shift.duration }
+        it { expect(results['start_time']).to eq work_shift.start_time }
+        it { expect(results['end_time']).to eq work_shift.end_time }
+      end
+    end
   end
 
   describe 'logged out' do
@@ -35,6 +55,17 @@ RSpec.describe WorkShiftsController, type: :controller do
       before do
         xhr :get, :index, format: :json
       end
+
+      it { expect(response.status).to eq 401 }
+      it { expect(response.body).to eq '' }
+    end
+
+    describe 'show' do
+      before do
+        xhr :get, :show, format: :json, id: work_shift.id
+      end
+
+      let(:work_shift) { FactoryGirl.create(:work_shift) }
 
       it { expect(response.status).to eq 401 }
       it { expect(response.body).to eq '' }
