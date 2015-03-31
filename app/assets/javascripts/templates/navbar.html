@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand" href="#/">Shifter</a>
         </div>
-        <div bs-collapse-target>
+        <div class="navbar-collapse" bs-collapse-target>
             <ul class="nav navbar-nav">
                 <li ng-repeat="link in links" data-match-route="/{{ link.route }}"><a ng-href="{{ link.link }}">{{ link.text }}</a></li>
             </ul>

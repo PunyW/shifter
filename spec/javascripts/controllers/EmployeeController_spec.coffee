@@ -5,15 +5,14 @@ describe 'EmployeeCtrl', ->
   httpBackend = null
   location    = null
   flash       = null
-  employeeId  = 87
 
   fakeEmployee =
-    id: employeeId
+    id: 87
     first_name: 'Kalam'
     last_name: 'Mekhar'
     work_percent: 1
 
-  setupController = (employeeExists = true, employeeId = 87)->
+  setupController = (employeeExists = true, employeeId = fakeEmployee.id)->
     inject(($location, $routeParams, $rootScope, $httpBackend, $controller, _flash_)->
       scope       = $rootScope.$new()
       location    = $location
@@ -52,7 +51,7 @@ describe 'EmployeeCtrl', ->
       it 'loads the given employee', ->
         httpBackend.flush()
         expect(scope.employee).toBe(null)
-        expect(flash.error).toBe("There is no employee with ID #{employeeId}")
+        expect(flash.error).toBe("There is no employee with ID #{fakeEmployee.id}")
 
     describe 'create', ->
       newEmployee =

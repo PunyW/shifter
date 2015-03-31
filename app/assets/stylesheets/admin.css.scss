@@ -1,4 +1,16 @@
-.sidebar {
-  height: 100%;
-  padding-right: 0;
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+
+  .sidebar-nav .navbar {
+    ul {
+      float: none;
+    }
+
+    ul:not {
+      display: block;
+    }
+  }
 }
