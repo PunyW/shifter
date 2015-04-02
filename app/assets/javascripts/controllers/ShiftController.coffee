@@ -7,12 +7,12 @@ angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams',
       }
     )
 
-    if $routeParams.shiftId
-      Shift.get({ shiftId: $routeParams.shiftId },
+    if $routeParams.resourceId
+      Shift.get({ shiftId: $routeParams.resourceId },
         ( (shift)-> $scope.shift = shift ),
         ( (httpResponse)->
             $scope.shift = null
-            flash.error = "There is no shift with ID #{$routeParams.shiftId}"
+            flash.error = "There is no shift with ID #{$routeParams.resourceId}"
         )
       )
     else

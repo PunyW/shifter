@@ -3,7 +3,6 @@ include TestUtils
 
 RSpec.describe WorkShiftsController, type: :controller do
   render_views
-
   describe 'logged in' do
     let!(:user) { FactoryGirl.create(:user) }
     before do

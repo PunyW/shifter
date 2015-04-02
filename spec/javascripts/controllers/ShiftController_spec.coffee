@@ -19,11 +19,11 @@ describe 'ShiftCtrl', ->
       scope = $rootScope.$new()
       routeParams = $routeParams
       httpBackend = $httpBackend
-      routeParams.shiftId = shiftId if shiftId
       flash = _flash_
+      routeParams.resourceId = shiftId if shiftId
 
       if shiftId
-        request = new RegExp("\/work_shifts/#{shiftId}")
+        request = new RegExp("\work_shifts/#{shiftId}")
         results = if shiftExists
           [200, fakeShift]
         else
@@ -52,4 +52,4 @@ describe 'ShiftCtrl', ->
       it 'tries to load the given shift', ->
         httpBackend.flush()
         expect(scope.shift).toBe(null)
-        expect(flash.error).toBe("There is no shift with ID #{shiftId}")
+        expect(flash.error).toBe("There is no shift with ID #{fakeShift.id}")

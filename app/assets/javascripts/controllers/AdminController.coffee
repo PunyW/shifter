@@ -1,20 +1,31 @@
-angular.module('controllers').controller('AdminCtrl', ['$scope',
-  ($scope) ->
-    $scope.links = [
-      {
+angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams', '$location'
+  ($scope, $routeParams, $location) ->
+    $scope.links = {
+      employees: {
         name: 'Manage employees'
         view: 'admin/employees.html'
-        controller: 'EmployeeCtrl'
+        path: 'employees'
       }
-      {
+      shifts: {
         name: 'Manage shifts'
         view: 'admin/shifts.html'
-        controller: 'ShiftCtrl'
+        path: 'shifts'
+        form: 'admin/shifts/show.html'
       }
-    ]
+    }
 
-    $scope.view = $scope.links[0].view
 
     $scope.changeView = (link) ->
       $scope.view = link.view
+      $location.path("/admin/#{link.path}")
+
+
+    resolveView = () ->
+      if $routeParams.resourceId
+        $scope.view = $scope.links[$routeParams.site].form
+      else
+        site = $routeParams.site || 'employees'
+        $scope.view = $scope.links[site].view
+
+    resolveView()
 ])

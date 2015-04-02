@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+WorkShift.create name: 'Morning', description: 'Morning shift from 7:00 to 15:00', duration: 8, start_time: '7:00', end_time: '15:00'
+WorkShift.create name: 'Evening', description: 'Evening shift from 14:00 to 22:00', duration: 8, start_time: '14:00', end_time: '22:00'

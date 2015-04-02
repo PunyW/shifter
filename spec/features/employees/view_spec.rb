@@ -25,7 +25,6 @@ feature 'Viewing an employee', js: true do
 
       expect(page).to have_content('Kalam Mekhar')
       expect(page).to_not have_content('100%')
-
     end
   end
 end
