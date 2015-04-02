@@ -72,6 +72,7 @@ feature 'Employee', js: true do
 
         scenario 'delete' do
           click_on 'Delete'
+          expect(page).to have_content('New employee...')
           expect(Employee.all.size).to eq 0
         end
       end
