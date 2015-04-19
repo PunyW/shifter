@@ -1,4 +1,3 @@
-sudo: false
 language: ruby
 cache:
   bundler: true
@@ -19,3 +18,17 @@ script:
 - bundle exec rake db:test:prepare
 - bundle exec rspec -fd spec/
 - bundle exec teaspoon
+after_success:
+- sudo sh -c 'echo "deb http://apt.gemnasium.com stable main" > /etc/apt/sources.list.d/gemnasium.list'
+- sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com E5CEAB0AC5F1CA2A
+- sudo apt-get update
+- sudo apt-get install gemnasium-toolbelt
+- gemnasium autoupdate run
+deploy:
+  provider: heroku
+  api_key:
+    secure: C0+e86XFI5I2KhDh9vqv+pE4IPfOI0SHkEa9bXdl4lyNUP9YoGuNC+BblgpffjnkfWAij6HBxbiDDQP5SW6KqIKlhhqqWDSmRVUuhXlam8uWfa6PrBdVxfcqGJ9Kppu0TrcqS/RxqkpXEua94UeguYh0MCrPg27a9Ct0sb066Zw=
+  app: blazing-shifter
+  run: "rake db:migrate"
+  on:
+    repo: PunyW/shifter
