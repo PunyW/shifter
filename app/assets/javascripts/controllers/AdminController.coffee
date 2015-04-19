@@ -1,5 +1,5 @@
-angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams', '$location'
-  ($scope, $routeParams, $location) ->
+angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams', '$location', '$rootScope',
+  ($scope, $routeParams, $location, $rootScope) ->
     $scope.links = {
       employees: {
         name: 'Manage employees'
@@ -14,11 +14,15 @@ angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams',
       }
     }
 
+    $scope.menuActive = if $rootScope.menuActive == undefined then 'active' else $rootScope.menuActive
 
     $scope.changeView = (link) ->
       $scope.view = link.view
       $location.path("/admin/#{link.path}")
 
+    $scope.toggleMenu = () ->
+      $scope.menuActive = if $scope.menuActive == 'active' then '' else 'active'
+      $rootScope.menuActive = $scope.menuActive
 
     resolveView = () ->
       if $routeParams.resourceId
