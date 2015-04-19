@@ -12,17 +12,14 @@ feature 'AdminPanel', js: true do
     end
 
     feature 'landing page' do
-      scenario 'table' do
+      scenario 'list' do
         expect(page).to have_content 'Morning'
-        expect(page).to have_content '8 am'
       end
 
       scenario 'click on shift' do
-        within 'table' do
-          find('td', text: 'Morning').click
-        end
+        click_on 'Morning'
 
-        expect(page).to have_content 'Morning shift'
+        expect(page).to have_content 'Shift name'
       end
     end
   end

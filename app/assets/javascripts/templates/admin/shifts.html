@@ -1,18 +1,7 @@
-<div ng-controller="ShiftsCtrl">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Starts</th>
-                <th>Ends</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="shift in shifts" href ng-click="edit(shift.id)">
-                <td>{{ shift.name }}</td>
-                <td>{{ shift.start_time }}</td>
-                <td>{{ shift.end_time }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div ng-controller="ShiftsCtrl" class="shift-list">
+    <ul>
+        <li ng-repeat="shift in shifts" class="show" ng-click="edit(shift.id)">
+            {{ shift.name }}
+        </li>
+    </ul>
 </div>

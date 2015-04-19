@@ -1,0 +1,78 @@
+.shifter-form {
+  margin: 10pt auto;
+  max-width: 400pt;
+  padding: 20pt 12pt 10pt 20pt;
+  font: 13pt "Lucida Sans", "Lucida Grande", sans-serif;
+
+  li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10pt 0 0 0;
+  }
+
+  label {
+    margin: 0 0 3pt 0;
+    padding: 0pt;
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type=text], input[type=date], input[type=datetime],
+  input[type=number], input[type=search], input[type=time],
+  input[type=url], input[type=email], textarea, select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1pt solid #BEBEBE;
+    padding: 7pt;
+    margin: 0pt;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    outline: none;
+  }
+
+  input[type=text]:focus, input[type=date]:focus, input[type=datetime]:focus,
+  input[type=number]:focus, input[type=search]:focus, input[type=time]:focus,
+  input[type=url]:focus, input[type=email]:focus, textarea:focus, select:focus {
+    -moz-box-shadow: 0 0 8pt #33a6cc;
+    -webkit-box-shadow: 0 0 8pt #33a6cc;
+    box-shadow: 0 0 8pt #33a6cc;
+    border: 1pt solid #33a6cc;
+  }
+
+  .field-divided {
+    width: 49%;
+  }
+
+  .field-long {
+    width: 100%;
+  }
+
+  .field-select {
+    width: 100%;
+  }
+
+  .field-textarea {
+    height: 100pt;
+  }
+
+  input[type=submit], input[type=button] {
+    background: #33a6cc;
+    padding: 0pt 15pt 8pt 15pt;
+    border: none;
+    color: #fff;
+  }
+
+  input[type=submit]:hover, input[type=button]:hover {
+    background: #007299;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  .required {
+    color: red;
+  }
+}

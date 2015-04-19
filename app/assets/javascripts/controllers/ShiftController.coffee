@@ -1,5 +1,5 @@
-angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams', '$resource', 'flash'
-  ($scope, $routeParams, $resource, flash) ->
+angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams', '$resource', 'flash', '$location',
+  ($scope, $routeParams, $resource, flash, $location) ->
     Shift = $resource('/api/work_shifts/:shiftId', { shiftId: '@id', format: 'json' },
       {
         'save': { method: 'PUT' }
@@ -16,5 +16,8 @@ angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams',
         )
       )
     else
-      $scope.shift = {}
+      $location.path('/admin/shifts/')
+
+    $scope.cancel = () ->
+      $location.path('/admin/shifts/')
 ])
