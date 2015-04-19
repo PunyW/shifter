@@ -47,6 +47,16 @@
     box-shadow: 0 0 8pt #33a6cc;
     border: 1pt solid #33a6cc;
   }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  a:hover {
+    text-display: none;
+    color: #fff;
+  }
 }
 
 @media (max-width: 767pt) {

@@ -47,6 +47,41 @@ RSpec.describe WorkShiftsController, type: :controller do
         it { expect(results['end_time']).to eq work_shift.end_time }
       end
     end
+
+    describe 'update' do
+      let(:work_shift) { FactoryGirl.create(:work_shift) }
+
+      describe 'with valid attributes' do
+        before do
+          xhr :put, :update, format: :json, id: work_shift.id, work_shift: {
+              name: 'Night',
+              description: 'Night shift',
+              start_time: '21:00',
+              end_time: '07:00',
+              duration: 10
+            }
+          work_shift.reload
+        end
+
+        it { expect(response.status).to eq 204 }
+        it { expect(work_shift.name).to eq 'Night' }
+        it { expect(work_shift.description).to eq 'Night shift' }
+        it { expect(work_shift.start_time).to eq '21:00' }
+        it { expect(work_shift.end_time).to eq '07:00' }
+        it { expect(work_shift.duration).to eq 10 }
+      end
+
+      describe 'with invalid attributes' do
+        before do
+          xhr :put, :update, format: :json, id: work_shift.id, work_shift: {
+              name: ''
+            }
+        end
+
+        it { expect(response.status).to eq 422 }
+        it { expect(work_shift.name).to eq 'Morning' }
+      end
+    end
   end
 
   describe 'logged out' do

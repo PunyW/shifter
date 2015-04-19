@@ -16,10 +16,15 @@ feature 'AdminPanel', js: true do
         expect(page).to have_content 'Morning'
       end
 
-      scenario 'click on shift' do
+      scenario 'editing shift' do
         click_on 'Morning'
 
         expect(page).to have_content 'Shift name'
+        fill_in 'name', with: 'Night'
+        click_on 'Save'
+
+        expect(page).to have_content 'Night'
+        expect(page).to have_content 'Shift was edited successfully'
       end
     end
   end
