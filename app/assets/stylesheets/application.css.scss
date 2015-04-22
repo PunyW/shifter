@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -48,9 +47,16 @@
 
 .sharp {
   border-radius: 0;
+  margin: 2pt;
 }
 
 .alert {
   width: 50%;
   margin: 0 25pt;
+}
+
+@media (max-width: 520px) {
+  .pull-right {
+    float: none !important;
+  }
 }

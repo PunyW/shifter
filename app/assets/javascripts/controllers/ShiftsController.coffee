@@ -5,4 +5,7 @@ angular.module('controllers').controller('ShiftsCtrl', ['$scope', '$location', '
 
     $scope.edit = (shiftId) ->
       $location.path("/admin/shifts/#{shiftId}")
+
+    $scope.newShift = () ->
+      $location.path('/admin/shifts/new')
 ])
