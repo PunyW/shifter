@@ -1,10 +1,13 @@
-<div ng-controller="ShiftsCtrl" class="shift-list">
+<div ng-controller="ShiftsCtrl" >
     <div flash-alert active-class="in" class="alert fade sharp">
         <span class="alert-message">{{flash.message}}</span>
     </div>
-    <ul>
-        <li ng-repeat="shift in shifts" class="show" ng-click="edit(shift.id)">
+    <ul class="shift-list col-md-10">
+        <li ng-repeat="shift in shifts" ng-click="edit(shift.id)">
             <a href>{{ shift.name }}</a>
         </li>
     </ul>
+    <div class="col-md-6">
+        <button class="btn btn-primary sharp" ng-click="newShift()">Create new...</button>
+    </div>
 </div>

@@ -42,6 +42,24 @@
     border: 1pt solid #33a6cc;
   }
 
+  input[type=text].has-error, input[type=date].has-error, input[type=datetime].has-error,
+  input[type=number].has-error, input[type=search].has-error, input[type=time].has-error,
+  input[type=url].has-error, input[type=email].has-error, textarea.has-error, select.has-error{
+    -moz-box-shadow: 0 0 8pt red;
+    -webkit-box-shadow: 0 0 8pt red;
+    box-shadow: 0 0 8pt red;
+    border: 1pt solid red;
+  }
+
+  input[type=text].valid, input[type=date].valid, input[type=datetime].valid,
+  input[type=number].valid, input[type=search].valid, input[type=time].valid,
+  input[type=url].valid, input[type=email].valid, textarea.valid, select.valid{
+    -moz-box-shadow: 0 0 8pt green;
+    -webkit-box-shadow: 0 0 8pt green;
+    box-shadow: 0 0 8pt green;
+    border: 1pt solid green;
+  }
+
   .field-divided {
     width: 49%;
   }

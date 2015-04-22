@@ -28,6 +28,43 @@ RSpec.describe WorkShiftsController, type: :controller do
       end
     end
 
+    describe 'create' do
+      describe 'with valid attributes' do
+        before do
+          xhr :post, :create, format: :json, work_shift: {
+              name: 'Morning',
+              description: 'Morning shift',
+              start_time: '7:00',
+              end_time: '14:00',
+              duration: 8
+            }
+        end
+        let(:work_shift) { WorkShift.last }
+
+        it { expect(response.status).to eq 201 }
+        it { expect(work_shift.name).to eq 'Morning' }
+        it { expect(work_shift.description).to eq 'Morning shift' }
+        it { expect(work_shift.start_time).to eq '7:00' }
+        it { expect(work_shift.end_time).to eq '14:00' }
+        it { expect(work_shift.duration).to eq 8 }
+      end
+
+      describe 'with invalid attributes' do
+        before do
+          xhr :post, :create, format: :json, work_shift: {
+              name: '',
+              description: 'Morning shift',
+              start_time: '7:00',
+              end_time: '14:00',
+              duration: 8
+            }
+        end
+
+        it { expect(response.status).to eq 422 }
+        it { expect(WorkShift.all.length).to eq 0 }
+      end
+    end
+
     describe 'show' do
       before do
         xhr :get, :show, format: :json, id: work_shift.id
@@ -82,6 +119,25 @@ RSpec.describe WorkShiftsController, type: :controller do
         it { expect(work_shift.name).to eq 'Morning' }
       end
     end
+
+    describe 'destroy' do
+      let(:work_shift) { FactoryGirl.create(:work_shift) }
+
+      before do
+        xhr :delete, :destroy, format: :json, id: work_shift.id
+      end
+
+      it { expect(response.status).to eq 204 }
+      it { expect(WorkShift.find_by_id(work_shift.id)).to eq nil }
+    end
+
+    describe "destroy shift that doesn't exist" do
+      before do
+        xhr :delete, :destroy, format: :json, id: 999
+      end
+
+      it { expect(response.status).to eq 404 }
+    end
   end
 
   describe 'logged out' do
@@ -103,6 +159,43 @@ RSpec.describe WorkShiftsController, type: :controller do
 
       it { expect(response.status).to eq 401 }
       it { expect(response.body).to eq '' }
+    end
+
+    describe 'create' do
+      before do
+        xhr :post, :create, format: :json, work_shift: {
+            name: 'Night',
+            description: 'Night shift',
+            start_time: '21:00',
+            end_time: '07:00',
+            duration: 10
+          }
+      end
+
+      it { expect(response.status).to eq 401 }
+      it { expect(WorkShift.all.length).to eq 0 }
+    end
+
+    describe 'update ' do
+      let(:work_shift) { FactoryGirl.create(:work_shift) }
+
+      before do
+        xhr :put, :update, format: :json, id: work_shift.id, work_shift: {
+            name: 'Night'
+          }
+      end
+
+      it { expect(response.status).to eq 401 }
+    end
+
+    describe 'destroy' do
+      let(:work_shift) { FactoryGirl.create(:work_shift) }
+
+      before do
+        xhr :delete, :destroy, format: :json, id: work_shift.id
+      end
+
+      it { expect(response.status).to eq 401 }
     end
   end
 end

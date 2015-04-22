@@ -48,15 +48,15 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
       data: {
         authorizedRoles: 'ALL'
       }
-    ).when('/admin/:site',
-      templateUrl: 'admin/index.html',
-      controller: 'AdminCtrl'
-      data: {
-        authorizedRoles: [USER_ROLES.admin]
-      }
     ).when('/admin',
       templateUrl: 'admin/index.html',
       controller: 'AdminCtrl',
+      data: {
+        authorizedRoles: [USER_ROLES.admin]
+      }
+    ).when('/admin/:site',
+      templateUrl: 'admin/index.html',
+      controller: 'AdminCtrl'
       data: {
         authorizedRoles: [USER_ROLES.admin]
       }
