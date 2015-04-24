@@ -1,6 +1,15 @@
 <div ng-controller="EmployeesCtrl" class="employee-list">
-    <h2>Employees</h2>
-    <ul>
-        <li ng-repeat="employee in employees"><a ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a></li>
-    </ul>
+    <div class="employee-list">
+        <h2>Employees</h2>
+
+        <p>Search: <input ng-model="searchText" name="search" type="text"></p>
+        <ul>
+            <li ng-repeat="employee in employees | filter: searchText">
+                <a href ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div style="padding-left: 20pt; padding-top: 10pt">
+        <button class="btn btn-primary sharp" ng-click="newEmployee()">New employee...</button>
+    </div>
 </div>

@@ -1,0 +1,25 @@
+<div ng-controller="EmployeeCtrl">
+    <form novalidate name="employeeForm">
+        <ul class="shifter-form">
+            <li>
+                <label>Full name <span class="required">*</span></label>
+                <input type="text" name="firstName" class="field-divided" ng-model="employee.first_name" placeholder="First name" required
+                       ng-class="{'has-error' : invalid(employeeForm, 'firstName') }" ng-minlength="1">
+                <input type="text" name="lastName" class="field-divided" ng-model="employee.last_name" placeholder="Last name" required
+                       ng-class="{'has-error' : invalid(employeeForm, 'lastName') }"ng-minglength="1">
+                <p ng-show="invalid(employeeForm, 'firstName')" class="help-block">First name is required</p>
+                <p ng-show="invalid(employeeForm, 'lastName')" class="help-block">Last name is required</p>
+            </li>
+            <li>
+                <label>Work percent <span class="required">*</span></label>
+                <input type="number" name="workPercent" class="field-long" ng-model="employee.work_percent" required
+                       ng-class="{'has-error' : invalid(employeeForm, 'workPercent') }" min="0" max="100">
+                <p ng-show="invalid(employeeForm, 'workPercent')" class="help-block">Enter number between 0 and 100</p>
+            </li>
+            <li>
+                <button class="btn btn-primary sharp" ng-click="save()" ng-disabled="employeeForm.$invalid">Save</button>
+                <button class="btn btn-info sharp" ng-click="cancel()">Cancel</button>
+            </li>
+        </ul>
+    </form>
+</div>

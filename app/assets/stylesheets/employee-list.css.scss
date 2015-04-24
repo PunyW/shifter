@@ -1,5 +1,4 @@
 .employee-list {
-  margin: 10pt;
   padding-left: 20pt;
   width: 50%;
 
@@ -38,5 +37,13 @@
   li a:hover {
     font-size: 20pt;
     background: #f6f6f6;
+  }
+
+  p {
+    font: 200 14pt/1.5 Helvetica, Verdana, sens-serif;
+  }
+
+  input[type=text] {
+    padding: 0pt 0pt 0pt 4pt;
   }
 }

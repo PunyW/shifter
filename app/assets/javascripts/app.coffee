@@ -12,35 +12,11 @@ shifter = angular.module('shifter', [
 shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
   ($routeProvider, $httpProvider, flashProvider, USER_ROLES)->
     $routeProvider
-    .when('/employees',
-      templateUrl: 'employees/index.html'
-      controller: 'EmployeesCtrl'
-      data: {
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
-      }
-    ).when('/',
-      templateUrl: 'employees/index.html'
-      controller: 'EmployeesCtrl'
-      data: {
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
-      }
-    ).when('/employees/new',
-      templateUrl: 'employees/form.html'
-      controller: 'EmployeeCtrl',
+    .when('/',
+      templateUrl: 'admin/index.html'
+      controller: 'AdminCtrl'
       data: {
         authorizedRoles: [USER_ROLES.admin]
-      }
-    ).when('/employees/:employeeId',
-      templateUrl: 'employees/show.html'
-      controller: 'EmployeeCtrl'
-      data: {
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
-      }
-    ).when('/employees/:employeeId/edit',
-      templateUrl: 'employees/form.html',
-      controller: 'EmployeeCtrl'
-      data: {
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
       }
     ).when('/login',
       templateUrl: 'sessions/login.html',

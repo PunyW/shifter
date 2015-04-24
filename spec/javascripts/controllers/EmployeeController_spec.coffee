@@ -19,7 +19,7 @@ describe 'EmployeeCtrl', ->
       httpBackend = $httpBackend
       routeParams = $routeParams
       flash       = _flash_
-      routeParams.employeeId = employeeId if employeeId
+      routeParams.resourceId = employeeId if employeeId
 
       if employeeId
         request = new RegExp("\/employees/#{employeeId}")
@@ -44,7 +44,9 @@ describe 'EmployeeCtrl', ->
       beforeEach(setupController())
       it 'loads the given employee', ->
         httpBackend.flush()
-        expect(scope.employee).toEqualData(fakeEmployee)
+        expect(scope.employee.first_name).toBe(fakeEmployee.first_name)
+        expect(scope.employee.last_name).toBe(fakeEmployee.last_name)
+        expect(scope.employee.work_percent).toBe(fakeEmployee.work_percent * 100)
 
     describe 'employee is not found', ->
       beforeEach(setupController(false))
@@ -71,7 +73,7 @@ describe 'EmployeeCtrl', ->
         scope.employee.work_percent = newEmployee.work_percent
         scope.save()
         httpBackend.flush()
-        expect(location.path()).toBe("/employees/#{newEmployee.id}")
+        expect(location.path()).toBe('/admin/employees')
 
     describe 'update', ->
       updateEmployee =
@@ -91,7 +93,7 @@ describe 'EmployeeCtrl', ->
         scope.employee.work_percent = updateEmployee.work_percent
         scope.save()
         httpBackend.flush()
-        expect(location.path()).toBe("/employees/#{scope.employee.id}")
+        expect(location.path()).toBe('/admin/employees')
 
     describe 'delete', ->
       beforeEach ->
@@ -103,4 +105,4 @@ describe 'EmployeeCtrl', ->
       it 'posts to the backend', ->
         scope.delete()
         httpBackend.flush()
-        expect(location.path()).toBe('/')
+        expect(location.path()).toBe('/admin/employees/')
