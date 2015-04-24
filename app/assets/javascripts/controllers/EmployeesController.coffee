@@ -9,5 +9,5 @@ angular.module('controllers').controller('EmployeesCtrl', ['$scope', '$routePara
       $scope.employees = Employee.query()
 
     $scope.newEmployee = -> $location.path('/employees/new')
-    $scope.edit = (employeeId)-> $location.path("/employees/#{employeeId}")
+    $scope.edit = (employeeId)-> $location.path("admin/employees/#{employeeId}")
 ])
