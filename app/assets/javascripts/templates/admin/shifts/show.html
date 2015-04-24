@@ -3,25 +3,31 @@
         <ul class="shifter-form">
             <li>
                 <label>Shift name<span class="required">*</span></label>
-                <input type="text" name="name" class="field-long" ng-model="shift.name" required ng-minlength="2"
+                <input type="text" name="name" class="field-long" ng-model="shift.name" required ng-minlength="1"
                        ng-class="{'has-error' : shiftForm.name.$invalid && !shiftForm.name.$pristine }">
+                <p ng-show="invalid(shiftForm, 'name')" class="has-error">Name cannot be blank.</p>
             </li>
             <li>
-                <label>Description <span class="required">*</span></label>
-                <textarea name="description" ng-model="shift.description" class="field-long field-textarea" required
-                          ng-class="{'has-error' : shiftForm.description.$invalid && !shiftForm.description.$pristine }"></textarea>
+                <label>Description </label>
+                <textarea name="description" ng-model="shift.description" class="field-long field-textarea"
+                          ng-class="{'has-error' : shiftForm.description.$invalid && !shiftForm.description.$pristine }" ng-maxlength="200"></textarea>
+                <p ng-show="invalid(shiftForm, 'description')" class="has-error">Description cannot be over 200 characters long.</p>
             </li>
             <li>
                 <label>Shift start and end time<span class="required">*</span></label>
                 <input type="text" name="startTime" class="field-divided" ng-model="shift.start_time" required
                        ng-class="{'has-error' : shiftForm.startTime.$invalid && !shiftForm.startTime.$pristine }">
+                <p ng-show="invalid(shiftForm, 'startTime')" class="has-error">Start time cannot be blank.</p>
+
                 <input type="text" name="endTime" class="field-divided" ng-model="shift.end_time" required
                        ng-class="{'has-error' : shiftForm.endTime.$invalid && !shiftForm.endTime.$pristine }">
+                <p ng-show="invalid(shiftForm, 'endTime')" class="has-error">End time cannot be blank.</p>
             </li>
             <li>
                 <label>Shift duration<span class="required">*</span></label>
                 <input type="number" name="duration" class="field-divided" ng-model="shift.duration" required
                        ng-class="{'has-error' : shiftForm.duration.$invalid && !shiftForm.duration.$pristine }" ng-pattern="/^\d{1,2}$/">
+                <p ng-show="invalid(shiftForm, 'duration')" class="has-error">Duration cannot be blank.</p>
             </li>
             <li>
                 <button ng-disabled="shiftForm.$invalid" class="btn btn-primary sharp" ng-click="save()">Save</button>

@@ -20,7 +20,7 @@
 
   input[type=text], input[type=date], input[type=datetime],
   input[type=number], input[type=search], input[type=time],
-  input[type=url], input[type=email], textarea, select {
+  input[type=url], input[type=email], textarea, select, input[type=password] {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -35,7 +35,8 @@
 
   input[type=text]:focus, input[type=date]:focus, input[type=datetime]:focus,
   input[type=number]:focus, input[type=search]:focus, input[type=time]:focus,
-  input[type=url]:focus, input[type=email]:focus, textarea:focus, select:focus {
+  input[type=url]:focus, input[type=email]:focus, textarea:focus, select:focus,
+  input[type=password]:focus {
     -moz-box-shadow: 0 0 8pt #33a6cc;
     -webkit-box-shadow: 0 0 8pt #33a6cc;
     box-shadow: 0 0 8pt #33a6cc;
@@ -44,7 +45,8 @@
 
   input[type=text].has-error, input[type=date].has-error, input[type=datetime].has-error,
   input[type=number].has-error, input[type=search].has-error, input[type=time].has-error,
-  input[type=url].has-error, input[type=email].has-error, textarea.has-error, select.has-error{
+  input[type=url].has-error, input[type=email].has-error, textarea.has-error, select.has-error,
+  input[type=password].has-error {
     -moz-box-shadow: 0 0 8pt red;
     -webkit-box-shadow: 0 0 8pt red;
     box-shadow: 0 0 8pt red;
@@ -53,11 +55,23 @@
 
   input[type=text].valid, input[type=date].valid, input[type=datetime].valid,
   input[type=number].valid, input[type=search].valid, input[type=time].valid,
-  input[type=url].valid, input[type=email].valid, textarea.valid, select.valid{
+  input[type=url].valid, input[type=email].valid, textarea.valid, select.valid,
+  input[type=password].valid {
     -moz-box-shadow: 0 0 8pt green;
     -webkit-box-shadow: 0 0 8pt green;
     box-shadow: 0 0 8pt green;
     border: 1pt solid green;
+  }
+
+  p.has-error {
+    margin: 2pt;
+    color: red;
+  }
+
+  p.invalid {
+    width: 100%;
+    border: 1pt solid red;
+    padding: 8pt;
   }
 
   .field-divided {
@@ -74,20 +88,6 @@
 
   .field-textarea {
     height: 100pt;
-  }
-
-  input[type=submit], input[type=button] {
-    background: #33a6cc;
-    padding: 0pt 15pt 8pt 15pt;
-    border: none;
-    color: #fff;
-  }
-
-  input[type=submit]:hover, input[type=button]:hover {
-    background: #007299;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
   }
 
   .required {
