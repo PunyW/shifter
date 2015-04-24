@@ -45,6 +45,7 @@ feature 'AdminPanel', js: true do
 
         expect(page).to have_no_content 'Morning'
         expect(page).to have_content 'Shift was deleted successfully'
+        expect(WorkShift.all.length).to eq 0
       end
     end
   end

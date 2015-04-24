@@ -55,4 +55,7 @@ angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams',
             flash.success = 'Shift was created successfully'
           ), onError
         )
+
+    $scope.invalid = (element, field) ->
+      return element[field].$invalid && !element[field].$pristine
 ])

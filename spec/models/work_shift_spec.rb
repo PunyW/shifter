@@ -18,7 +18,7 @@ RSpec.describe WorkShift, type: :model do
   end
 
   describe 'with invalid description' do
-    subject { WorkShift.create(name: 'Dummy', description: ' ', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
+    subject { WorkShift.create(name: 'Dummy', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris hendrerit, malesuada sapien sollicitudin, cursus turpis. Proin volutpat eget arcu non ornare. Curabitur rutrum augue sit nullam.', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
     it { should be_invalid }
   end
 

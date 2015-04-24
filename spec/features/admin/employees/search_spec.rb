@@ -9,8 +9,6 @@ feature 'Looking for employees', js: true do
       Employee.create!(first_name: 'Kalam', last_name: 'Mekhar', work_percent: 1)
       Employee.create!(first_name: 'Ben', last_name: 'Quick', work_percent: 1)
       Employee.create!(first_name: 'Ganoes', last_name: 'Paron', work_percent: 1)
-
-      visit '/#/employees'
     end
 
     scenario 'by default everyone is shown' do
@@ -20,17 +18,17 @@ feature 'Looking for employees', js: true do
     end
 
     scenario 'finding employee that exists' do
-      fill_in 'keywords', with: 'kalam'
-      click_on 'Search'
+      fill_in 'search', with: 'kalam'
 
       expect(page).to have_content 'Kalam Mekhar'
     end
 
     scenario 'searching employee that doesn\'t exist' do
-      fill_in 'keywords', with: 'pekka'
-      click_on 'Search'
+      fill_in 'search', with: 'pekka'
 
-      expect(page).to have_content 'No employees found'
+      expect(page).to have_no_content 'Kalam'
+      expect(page).to have_no_content 'Quick'
+      expect(page).to have_no_content 'Paron'
     end
   end
 end

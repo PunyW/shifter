@@ -3,18 +3,19 @@ angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams',
     $scope.links = {
       employees: {
         name: 'Manage employees'
-        view: 'admin/employees.html'
+        view: 'admin/employees/employees.html'
         path: 'employees'
+        form: 'admin/employees/form.html'
       }
       shifts: {
         name: 'Manage shifts'
-        view: 'admin/shifts.html'
+        view: 'admin/shifts/shifts.html'
         path: 'shifts'
-        form: 'admin/shifts/show.html'
+        form: 'admin/shifts/form.html'
       }
     }
 
-    $scope.menuActive = if $rootScope.menuActive == undefined then 'active' else $rootScope.menuActive
+    $scope.menuActive = if $rootScope.menuActive == undefined then '' else $rootScope.menuActive
 
     $scope.changeView = (link) ->
       $scope.view = link.view
