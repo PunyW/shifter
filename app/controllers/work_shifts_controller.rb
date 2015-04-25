@@ -38,6 +38,6 @@ class WorkShiftsController < ApplicationController
     end
 
     def shift_params
-      params.require(:work_shift).permit(:name, :description, :duration, :start_time, :end_time)
+      params.require(:work_shift).permit(:name, :description, :duration, :start_time, :end_time, :abbreviation)
     end
 end

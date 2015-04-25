@@ -5,6 +5,7 @@ FactoryGirl.define do
     duration 8.0
     start_time '8 am'
     end_time '4 pm'
+    abbreviation 'A'
   end
 
   factory :employee do

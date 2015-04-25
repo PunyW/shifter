@@ -30,6 +30,12 @@
                 <p ng-show="invalid(shiftForm, 'duration')" class="help-block">Duration cannot be blank.</p>
             </li>
             <li>
+                <label>Shift abbreviation<span class="required">*</span></label>
+                <input type="text" name="abbreviation" class="field-long" ng-model="shift.abbreviation" required
+                       ng-class="{ 'has-error' : invalid(shiftForm, 'abbreviation') }" ng-minlength="1" ng-maxlength="3">
+                <p ng-show="invalid(shiftForm, 'abbreviation')" class="help-block">Abbreviation has to be between 1 and 3 letters long.</p>
+            </li>
+            <li>
                 <button ng-disabled="shiftForm.$invalid" class="btn btn-primary sharp" ng-click="save()">Save</button>
                 <button class="btn btn-info sharp" ng-click="cancel()">Cancel</button>
                 <button ng-hide="newShift" class="btn btn-danger sharp pull-right" ng-click="delete()">Delete</button>

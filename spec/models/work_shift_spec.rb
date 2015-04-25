@@ -10,30 +10,36 @@ RSpec.describe WorkShift, type: :model do
     its(:duration) { should eq 8.0 }
     its(:start_time) { should eq '8 am' }
     its(:end_time) { should eq '4 pm' }
+    its(:abbreviation) { should eq 'A' }
   end
 
   describe 'with invalid name' do
-    subject { WorkShift.create(name: '', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
+    subject { WorkShift.create(name: '', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: '8 pm', abbreviation: 'A') }
     it { should be_invalid }
   end
 
   describe 'with invalid description' do
-    subject { WorkShift.create(name: 'Dummy', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris hendrerit, malesuada sapien sollicitudin, cursus turpis. Proin volutpat eget arcu non ornare. Curabitur rutrum augue sit nullam.', duration: 8.0, start_time: '4 am', end_time: '8 pm') }
+    subject { WorkShift.create(name: 'Dummy', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris hendrerit, malesuada sapien sollicitudin, cursus turpis. Proin volutpat eget arcu non ornare. Curabitur rutrum augue sit nullam.',
+      duration: 8.0, start_time: '4 am', end_time: '8 pm', abbreviation: 'A') }
     it { should be_invalid }
   end
 
   describe 'with invalid duration' do
-    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 0, start_time: '4 am', end_time: '8 pm') }
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 0, start_time: '4 am', end_time: '8 pm', abbreviation: 'A') }
     it { should be_invalid }
   end
 
   describe 'with invalid start time' do
-    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: ' ', end_time: '8 pm') }
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: ' ', end_time: '8 pm', abbreviation: 'A') }
     it { should be_invalid }
   end
 
   describe 'with invalid end time' do
-    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: ' ') }
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: ' ', abbreviation: 'A') }
     it { should be_invalid }
+  end
+
+  describe 'with invalid abbreviation' do
+    subject { WorkShift.create(name: 'dummy', description: 'Dummy text for testing purposes', duration: 8.0, start_time: '4 am', end_time: '8 pm', abbreviation: 'asdf') }
   end
 end

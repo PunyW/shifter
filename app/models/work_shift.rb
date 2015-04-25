@@ -4,4 +4,5 @@ class WorkShift < ActiveRecord::Base
   validates_length_of :description, maximum: 200
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validates_length_of :abbreviation, maximum: 3, minimum: 1
 end
