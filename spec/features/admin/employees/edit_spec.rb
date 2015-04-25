@@ -24,8 +24,7 @@ feature 'Employee', js: true do
           expect(page).to have_content('Last name is required')
           expect(page).to have_content('Enter number between 0 and 100')
 
-          click_on 'Cancel'
-          expect(page).to have_content('New employee...')
+          expect(page).to have_button('Save', disabled: true)
         end
       end
 
@@ -40,6 +39,7 @@ feature 'Employee', js: true do
 
           click_on 'Save'
 
+          find('.employee-list').find('ul')
           expect(page).to have_content 'Ganoes'
         end
       end
@@ -48,8 +48,7 @@ feature 'Employee', js: true do
         before do
           FactoryGirl.create(:employee, first_name: 'Ganoes', last_name: 'Paron')
           visit '/#/admin/employees'
-
-          fill_in 'search', with: 'Paron'
+          find('.employee-list').find('ul')
           click_on 'Ganoes Paron'
         end
 
