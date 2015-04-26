@@ -7,4 +7,6 @@ angular.module('controllers').controller('SessionsCtrl', ['$scope', '$rootScope'
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed)
 
     $scope.visible = true
+    $scope.createAccount = () ->
+
 ])

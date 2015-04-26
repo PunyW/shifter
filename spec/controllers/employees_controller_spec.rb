@@ -144,7 +144,6 @@ RSpec.describe EmployeesController, type: :controller do
 
       describe 'create' do
         before do
-
           xhr :post, :create, format: :json, employee: {
               first_name: 'Kalam',
               last_name: 'Mekhar',
