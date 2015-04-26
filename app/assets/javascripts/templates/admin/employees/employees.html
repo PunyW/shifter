@@ -5,8 +5,8 @@
         <p>Search: <input ng-model="searchText" name="search" type="text"></p>
         <ul>
             <li ng-repeat="employee in employees | filter: searchText">
-                <a href ng-click="edit(employee.id)" class="col-md-3">{{ employee.first_name }} {{ employee.last_name }}</a>
-                <span ng-hide="employee.username" href class="label label-info sharp" data-animation="am-fade-slide-top" bs-modal="modal" data-template="admin/employees/assignForm.html">Assign to user</span>
+                <a href ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a>
+                <span ng-hide="employee.username" ng-click="" class="label label-info sharp" data-animation="am-fade-slide-top" bs-modal="modal" data-template="admin/employees/assignForm.html">Assign to user</span>
             </li>
         </ul>
     </div>

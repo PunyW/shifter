@@ -33,6 +33,10 @@
     transition: font-size 0.3s ease, backgroun-color 0.3s ease;
   }
 
+  li span {
+    margin-left: 15pt;
+  }
+
   li a:hover {
     font-size: 20pt;
     background: #f6f6f6;

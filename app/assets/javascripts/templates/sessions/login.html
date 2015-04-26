@@ -1,5 +1,5 @@
 <div ng-if="visible" ng-controller="SessionsCtrl" class="container">
-    <form name="loginForm" novalidate ng-submit="newSession(credentials)">
+    <form name="loginForm" novalidate >
         <ul class="shifter-form">
             <li>
                 <p flash-alert duration="0" active-class="invalid" class="sharp">
@@ -15,7 +15,7 @@
                 <input name="password" type="password" ng-model="credentials.password" class="field-long">
             </li>
             <li>
-                <input type="submit" name="LoginButton" value="Log in" class="btn btn-primary sharp">
+                <input type="button" name="LoginButton" value="Log in" class="btn btn-primary sharp" ng-click="newSession(credentials)">
                 <button type="button" class="btn btn-info sharp pull-right" ng-click="createAccount()"
                         data-animation="am-fade-slide-top" bs-modal="modal" data-template="sessions/createForm.html">Create account</button>
             </li>

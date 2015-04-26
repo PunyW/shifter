@@ -9,7 +9,5 @@ angular.module('controllers').controller('SessionsCtrl', ['$scope', '$rootScope'
     $scope.visible = true
     $scope.createAccount = () ->
 
-    $scope.invalid = (element, field) ->
-      return element[field].$invalid && !element[field].$pristine
 
 ])
