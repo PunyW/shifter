@@ -1,4 +1,6 @@
 class Employee < ActiveRecord::Base
+  belongs_to :user
+
   before_save :format_percentage
 
   validates :work_percent, numericality: { greater_than_or_equal_to: 0,

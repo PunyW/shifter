@@ -1,5 +1,5 @@
-angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParams', '$resource', '$location', 'flash',
-  ($scope, $routeParams, $resource, $location, flash)->
+angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParams', '$resource', '$location', 'flash', 'SessionService', 'USER_ROLES',
+  ($scope, $routeParams, $resource, $location, flash, SessionService, USER_ROLES)->
     Employee = $resource('/api/employees/:employeeId', {employeeId: '@id', format: 'json'},
       {
         'save': {method: 'PUT'},
@@ -53,9 +53,16 @@ angular.module('controllers').controller('EmployeeCtrl', ['$scope', '$routeParam
         )
 
     $scope.delete = ->
-      $scope.employee.$delete()
-      $scope.cancel()
+      if $scope.isAuthorized()
+        $scope.employee.$delete()
+        $scope.cancel()
+      else
+        flash.error = 'Insufficient privileges.'
+        $location.path('admin/employees')
 
     $scope.invalid = (element, field) ->
       return element[field].$invalid && !element[field].$pristine
+
+    $scope.isAuthorized = () ->
+      SessionService.isAuthorized(USER_ROLES.admin)
 ])
