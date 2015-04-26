@@ -62,6 +62,7 @@ describe 'EmployeeCtrl', ->
         last_name: 'Mekhar'
         work_percent: 100
 
+
       beforeEach ->
         setupController(false, false)
         request = new RegExp("\/employees")
@@ -94,15 +95,3 @@ describe 'EmployeeCtrl', ->
         scope.save()
         httpBackend.flush()
         expect(location.path()).toBe('/admin/employees')
-
-    describe 'delete', ->
-      beforeEach ->
-        setupController()
-        httpBackend.flush()
-        request = new RegExp("\/employees/#{scope.employee.id}")
-        httpBackend.expectDELETE(request).respond(204)
-
-      it 'posts to the backend', ->
-        scope.delete()
-        httpBackend.flush()
-        expect(location.path()).toBe('/admin/employees/')
