@@ -48,6 +48,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-strap'
   gem 'rails-assets-angular-animate'
   gem 'rails-assets-angular-motion'
+  gem 'rails-assets-angular-validation-match'
 end
 
 group :development, :test do

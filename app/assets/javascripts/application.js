@@ -22,4 +22,5 @@
 //= require angular-flash
 //= require angular-strap
 //= require angular-animate
+//= require angular-validation-match
 //= require_tree .

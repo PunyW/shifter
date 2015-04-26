@@ -1,0 +1,49 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create Account</h4>
+            </div>
+            <div class="modal-body">
+                <form name="createForm" novalidate ng-submit="newUser()">
+                    <ul class="shifter-form">
+                        <li>
+                            <p flash-alert duration="0" active-class="invalid" class="sharp">
+                                {{flash.message}}
+                            </p>
+                        </li>
+                        <li>
+                            <label>Email <span class="required">*</span></label>
+                            <input name="email" type="email" ng-model="credentials.email" class="field-long"
+                                   ng-class="{'has-error' : invalid(createForm, 'email') }">
+                            <p ng-show="invalid(createForm, 'email')" class="help-block">Invalid email address.</p>
+                        </li>
+                        <li>
+                            <label>Username <span class="required">*</span></label>
+                            <input name="username" type="text" ng-model="credentials.username" class="field-long"
+                                   ng-class="{'has-error' : invalid(createForm, 'username') }" ng-minlength="3" ng-maxlength="15">
+                            <p ng-show="invalid(createForm, 'username')" class="help-block">Username has to be between 3 and 15 characters long.</p>
+                        </li>
+                        <li>
+                            <label>Password <span class="required">*</span></label>
+                            <input name="password" type="password" ng-model="credentials.password" class="field-long"
+                                   ng-class="{'has-error' : invalid(createForm, 'password') }" ng-minlength="8" ng-pattern="/^(?=.*[A-Z])(?=.*\d).+$/">
+                            <p ng-show="invalid(createForm, 'password')" class="help-block">Password has to be at least 8 characters long and have at least 1 uppercase letter and number.</p>
+                        </li>
+                        <li>
+                            <label>Password confirmation <span class="required">*</span></label>
+                            <input name="passwordConfirmation" type="password" ng-model="credentials.passwordConfirmation" class="field-long" match="credentials.password"
+                                   ng-class="{'has-error' : createForm.passwordConfirmation.$error.match }">
+                            <p ng-show="createForm.passwordConfirmation.$error.match" class="help-block">Passwords doesn't match.</p>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary sharp">Save</button>
+                <button type="button" class="btn btn-danger sharp" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

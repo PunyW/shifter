@@ -16,7 +16,8 @@
             </li>
             <li>
                 <input type="submit" name="LoginButton" value="Log in" class="btn btn-primary sharp">
-                <button class="btn btn-info sharp pull-right" ng-click="createAccount()">Create account</button>
+                <button type="button" class="btn btn-info sharp pull-right" ng-click="createAccount()"
+                        data-animation="am-fade-slide-top" bs-modal="modal" data-template="sessions/createForm.html">Create account</button>
             </li>
         </ul>
     </form>
