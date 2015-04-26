@@ -21,4 +21,5 @@
 //= require angular-rails-templates
 //= require angular-flash
 //= require angular-strap
+//= require angular-animate
 //= require_tree .

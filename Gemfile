@@ -46,6 +46,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-cookies'
   gem 'rails-assets-autofill-event'
   gem 'rails-assets-angular-strap'
+  gem 'rails-assets-angular-animate'
+  gem 'rails-assets-angular-motion'
 end
 
 group :development, :test do

@@ -5,11 +5,7 @@ class EmployeesController < ApplicationController
   before_action :admin_only, except: [:index, :show, :update]
 
   def index
-    @employees = if params[:keywords]
-                   Employee.where('first_name ilike ? or last_name ilike ?', "%#{params[:keywords]}%", "%#{params[:keywords]}%")
-                 else
-                   Employee.all
-                 end
+    @employees = Employee.all
   end
 
   def show

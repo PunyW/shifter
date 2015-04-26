@@ -6,7 +6,8 @@ shifter = angular.module('shifter', [
   'controllers',
   'angular-flash.service',
   'angular-flash.flash-alert-directive',
-  'mgcrea.ngStrap'
+  'mgcrea.ngStrap',
+  'ngAnimate'
 ])
 
 shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
