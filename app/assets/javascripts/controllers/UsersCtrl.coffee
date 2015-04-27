@@ -22,12 +22,12 @@ angular.module('controllers').controller('UsersCtrl',['$scope', '$resource', '$l
           username: $scope.user.username
           email: $scope.user.email
           password: $scope.user.password
-          passworc_confirmation: $scope.user.password_confirmation
+          password_confirmation: $scope.user.password_confirmation
         }
       }
       User.create(user,
         (() ->
-          console.log('created')
+          $location.path('/login')
         ), onError
       )
 ])
