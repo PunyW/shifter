@@ -43,7 +43,7 @@ shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
       data: {
         authorizedRoles: [USER_ROLES.admin]
       }
-    ).when('/create_user'
+    ).when('/create_account'
       templateUrl: 'sessions/createForm.html'
       controller: 'UsersCtrl'
       data: {
