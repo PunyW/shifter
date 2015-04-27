@@ -2,16 +2,22 @@ angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams',
   ($scope, $routeParams, $location, $rootScope) ->
     $scope.links = {
       employees: {
-        name: 'Manage employees'
+        name: 'Employees'
         view: 'admin/employees/employees.html'
         path: 'employees'
         form: 'admin/employees/form.html'
       }
       shifts: {
-        name: 'Manage shifts'
+        name: 'Shifts'
         view: 'admin/shifts/shifts.html'
         path: 'shifts'
         form: 'admin/shifts/form.html'
+      }
+      shifts: {
+        name: 'Lists'
+        view: 'admin/lists/lists.html'
+        path: 'lists'
+        form: 'admin/lists/form.html'
       }
     }
 

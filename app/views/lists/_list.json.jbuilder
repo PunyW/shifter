@@ -1,0 +1,1 @@
+json.(list, :id, :length, :number, :start_date, :end_date)

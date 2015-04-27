@@ -1,5 +1,6 @@
 angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams', 'flash', '$location', 'ShiftService',
   ($scope, $routeParams, flash, $location, ShiftService) ->
+
     if $routeParams.resourceId
       if $routeParams.resourceId == 'new'
         $scope.newShift = true

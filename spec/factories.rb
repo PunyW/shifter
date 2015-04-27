@@ -21,4 +21,11 @@ FactoryGirl.define do
     email 'admin@test.com'
     user_role 1
   end
+
+  factory :list do
+    start_date '2015-04-27'
+    end_date '2015-05-11'
+    number 1
+    length 3
+  end
 end
