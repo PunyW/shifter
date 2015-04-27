@@ -12,4 +12,19 @@ angular.module('controllers').controller('EmployeesCtrl',
         template: 'admin/employees/assignForm.html'
         autoClose: true
       }
+
+      $scope.assignUser = (user) ->
+        $scope.employee.user_id = user.id
+        $scope.employee.username = user.username
+        $scope.employee.$save(
+          (() ->
+            user.employee = $scope.employee
+          ), onError
+        )
+
+      onError = (_httpResponse_) ->
+        console.log(_httpResponse_)
+
+      $scope.assignEmployee = (employee) ->
+        $scope.employee = employee
   ])

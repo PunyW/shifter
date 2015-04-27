@@ -4,9 +4,9 @@
 
         <p>Search: <input ng-model="searchText" name="search" type="text"></p>
         <ul>
-            <li ng-repeat="employee in employees | filter: searchText">
-                <a href ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a>
-                <span ng-hide="employee.username" ng-click="" class="label label-info sharp" bs-popover
+            <li ng-repeat="employee in employees | filter: searchText | orderBy: 'last_name' ">
+                <a href ng-click="edit(employee.id)">{{ employee.last_name }} {{ employee.first_name }}</a>
+                <span ng-hide="employee.username" ng-click="assignEmployee(employee)" class="label label-info sharp" bs-popover
                       data-animation="am-flip-x" data-title="{{ popover.title }}" data-template="{{ popover.template }}"
                       data-auto-close="{{ popover.autoClose }}">Assign to user</span>
             </li>
