@@ -31,6 +31,7 @@ describe 'EmployeesCtrl', ->
 
       request = new RegExp('\/employees')
       httpBackend.expectGET(request).respond(employees)
+      httpBackend.expectGET(new RegExp('\/users')).respond([])
 
       ctrl = $controller('EmployeesCtrl',
         $scope: scope

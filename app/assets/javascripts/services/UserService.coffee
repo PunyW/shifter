@@ -6,13 +6,6 @@ angular.module('shifter').factory('UserService', ['$resource',
         'create': {method: 'POST'}
       }
     )
-    UserService = {
-      getUser: (id) ->
 
-      getUsers: ()->
-        return User.query()
-
-    }
-
-    return UserService
+    return User
 ])

@@ -1,18 +1,10 @@
-angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams', '$resource', 'flash', '$location',
-  ($scope, $routeParams, $resource, flash, $location) ->
-    Shift = $resource('/api/work_shifts/:shiftId', {shiftId: '@id', format: 'json'},
-      {
-        'save': {method: 'PUT'}
-        'create': {method: 'POST'}
-      }
-    )
-
-
+angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams', 'flash', '$location', 'ShiftService',
+  ($scope, $routeParams, flash, $location, ShiftService) ->
     if $routeParams.resourceId
       if $routeParams.resourceId == 'new'
         $scope.newShift = true
       else
-        Shift.get({shiftId: $routeParams.resourceId},
+        ShiftService.get({shiftId: $routeParams.resourceId},
           ( (shift)-> $scope.shift = shift ),
           ( (httpResponse)->
             $scope.shift = null
@@ -49,7 +41,7 @@ angular.module('controllers').controller('ShiftCtrl', ['$scope', '$routeParams',
           ), onError
         )
       else
-        Shift.create($scope.shift,
+        ShiftService.create($scope.shift,
           ( (newShift) ->
             $location.path('/admin/shifts')
             flash.success = 'Shift was created successfully'
