@@ -19,6 +19,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response.status).to eq 201 }
         it { expect(User.last.username).to eq 'jaska' }
+
       end
 
       describe 'with invalid attributes' do
