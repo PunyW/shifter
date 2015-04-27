@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "angular-motion";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 [ng-click], [data-ng-click], [x-ng-click] {
   cursor: pointer;

@@ -36,6 +36,7 @@ gem 'angular-rails-templates'
 gem 'foreman', '= 0.77.0'
 gem 'active_model_serializers'
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3'

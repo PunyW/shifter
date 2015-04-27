@@ -13,7 +13,7 @@ angular.module('controllers').controller('AdminCtrl', ['$scope', '$routeParams',
         path: 'shifts'
         form: 'admin/shifts/form.html'
       }
-      shifts: {
+      lists: {
         name: 'Lists'
         view: 'admin/lists/lists.html'
         path: 'lists'

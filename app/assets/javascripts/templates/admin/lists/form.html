@@ -1,1 +1,26 @@
-<div ng-controller="ListCtrl">Form inc</div>
+<div ng-controller="ListCtrl">
+    <form novalidate name="listForm">
+        <ul class="shifter-form">
+            <li>
+                <label>Number and length</label>
+                <input type="number" class="field-divided" ng-model="list.number" placeholder="1" name="number">
+                <input type="number" class="field-divided" ng-model="list.length" placeholder="3" name="length">
+            </li>
+            <li>
+                <label>
+                    <i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i>
+                    Range
+                </label>
+                <input type="text" class="field-divided" ng-model="list.start_date" data-max-date="{{ list.end_date }}"
+                        placeholder="From" name="startDate" bs-datepicker data-date-format="MMM dd, yy">
+                <input type="text" class="field-divided" ng-model="list.end_date" date-min-date="{{ list.start_date }}"
+                        placeholder="To" name="endDate" bs-datepicker data-date-format="MMM dd, yy">
+            </li>
+            <li>
+                <button class="btn btn-primary sharp" ng-click="save()" ng-disabled="listForm.$invalid">Save</button>
+                <button class="btn btn-info sharp" ng-click="cancel()">Cancel</button>
+                <button class="btn btn-danger sharp pull-right" ng-click="delete()">Delete list</button>
+            </li>
+        </ul>
+    </form>
+</div>
