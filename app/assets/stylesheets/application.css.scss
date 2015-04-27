@@ -15,6 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "angular-motion";
 
 [ng-click], [data-ng-click], [x-ng-click] {
   cursor: pointer;

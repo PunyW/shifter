@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :signed_in?, except: [:create]
 
+  def index
+    @users = User.all
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

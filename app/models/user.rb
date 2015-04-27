@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :employee
   has_secure_password
   after_validation :ensure_token
 

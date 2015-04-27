@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :employees, only: [:index, :show, :create, :update, :destroy]
     resources :work_shifts, only: [:index, :show, :update, :destroy, :create]
-    resources :users, only: [:create, :update]
+    resources :users, only: [:create, :update, :index]
     post 'sessions/new', to: 'sessions#create'
   end
   # The priority is based upon order of creation: first created -> highest priority.

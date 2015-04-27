@@ -6,7 +6,9 @@
         <ul>
             <li ng-repeat="employee in employees | filter: searchText">
                 <a href ng-click="edit(employee.id)">{{ employee.first_name }} {{ employee.last_name }}</a>
-                <span ng-hide="employee.username" ng-click="" class="label label-info sharp" data-animation="am-fade-slide-top" bs-modal="modal" data-template="admin/employees/assignForm.html">Assign to user</span>
+                <span ng-hide="employee.username" ng-click="" class="label label-info sharp" bs-popover
+                      data-animation="am-flip-x" data-title="{{ popover.title }}" data-template="{{ popover.template }}"
+                      data-auto-close="{{ popover.autoClose }}">Assign to user</span>
             </li>
         </ul>
     </div>

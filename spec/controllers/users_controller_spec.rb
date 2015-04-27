@@ -47,7 +47,15 @@ RSpec.describe UsersController, type: :controller do
 
       it { expect(response.status).to eq 401 }
       it { expect(User.last.username).to eq 'admin' }
+    end
 
+    describe 'index' do
+      before do
+        User.create!(email: 'test@test.com', username: 'Test', password: 'TestPassword1', password_confirmation: 'TestPassword1')
+        xhr :get, :index, format: :json
+      end
+
+      it { expect(response.status).to eq 401 }
     end
   end
 
@@ -84,6 +92,30 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response.status).to eq 422 }
         it { expect(User.all.length).to eq 1 }
+      end
+    end
+
+    describe 'index' do
+      before do
+        User.create!(email: 'test@test.com', username: 'Test', password: 'TestPassword1', password_confirmation: 'TestPassword1')
+        xhr :get, :index, format: :json
+      end
+
+      subject(:results) { JSON.parse(response.body) }
+
+      context 'should have users' do
+        it 'should 200' do
+          expect(response.status).to eq 200
+        end
+
+        it 'should return 2 results' do
+          expect(results.size).to eq 2
+        end
+
+        it 'should contain both users' do
+          expect(results.map {|user| user['username'] } ).to include('Test')
+          expect(results.map {|user| user['username'] } ).to include('admin')
+        end
       end
     end
 
