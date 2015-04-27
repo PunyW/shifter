@@ -1,0 +1,36 @@
+<div>
+    <div class="header">
+        <i class="fa fa-angle-left" ng-click="previous()"></i>
+        <span ng-hide="part">List # </span>
+        <span ng-show="part">List # / part {{part}}</span>
+        <i class="fa fa-angle-right" ng-click="next()"></i>
+    </div>
+    <div class="employee names">
+        <span class="information">Name</span>
+    </div>
+    <div ng-style="{ 'width' : width }" class="week names" ng-repeat="i in getLength() track by $index">
+        <span class="day">Mon</span>
+        <span class="day">Tue</span>
+        <span class="day">Wed</span>
+        <span class="day">Thu</span>
+        <span class="day">Fri</span>
+        <span class="day">Sat</span>
+        <span class="day">Sun</span>
+    </div>
+    <div class="employee names">
+        <span class="information"></span>
+    </div>
+    <div ng-style="{ 'width' : width }" class="list" ng-repeat="week in list">
+        <span class="day" ng-repeat="day in week.days">{{day.number}}.{{day.month}}</span>
+    </div>
+    <div class="employees" ng-repeat="employee in employees">
+        <span class="name">{{employee.first_name}}</span>
+
+        <div ng-style="{ 'width' : width }" class="list" ng-repeat="week in list">
+            <a class="shift" ng-repeat="day in week.days" href data-animation="am-flip-x" bs-dropdown="shifts" aria-haspopup="true"
+                    ng-click="setInformation(employee, day)" aria-expanded="false" ng-bind="getWish(employee, day)">
+            </a>
+            <!--<a href="#" class="button" ng-repeat="day in week.days">{{day.number}}</a>-->
+        </div>
+    </div>
+</div>

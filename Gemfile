@@ -50,6 +50,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-animate'
   gem 'rails-assets-angular-motion'
   gem 'rails-assets-angular-validation-match'
+  gem 'rails-assets-momentjs'
 end
 
 group :development, :test do

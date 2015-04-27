@@ -1,0 +1,159 @@
+@mixin vertical-centre($height) {
+  height: $height;
+  line-height: $height !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin horizontal-centre() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+$border-colour:#CCC;
+
+shifter-calendar {
+  width: 960px;
+  float: left;
+  display: block;
+  @include border-box;
+  @include horizontal-centre;
+  background: #ffffff;
+  border: solid 1px $border-colour;
+  margin-bottom: 10px;
+
+  $secondary-colour: #2875C7;
+  $spacing: 10px;
+  $icon-width: 40px;
+  $header-height: 40px;
+
+  > div {
+    > div.header {
+      float: left;
+      width: 100%;
+      background: $secondary-colour;
+      height: $header-height;
+      color: #ffffff;
+
+      > * {
+        @include vertical-centre($header-height);
+      }
+
+      > i {
+        float: left;
+        width: $icon-width;
+        font-size: 1.125em;
+        font-weight: bold;
+        position: relative;
+        @include border-box;
+        padding: 0 $spacing;
+        cursor: pointer;
+      }
+
+      > i.fa-angle-left {
+        text-align: left;
+      }
+
+      > i.fa-angle-right {
+        text-align: right;
+        margin-left: $icon-width * -1;
+      }
+
+      > span {
+        float: left;
+        width: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        @include border-box;
+        padding-left: $icon-width + $spacing;
+        margin-left: $icon-width * -1;
+        text-align: center;
+        padding-right: $icon-width;
+        color: inherit;
+      }
+    }
+
+    > div.employee {
+      float: left;
+      width: 5%;
+      border-top: solid 1px $border-colour;
+
+      > span.information {
+        width: 100%;
+        float: left;
+        color: $secondary-colour;
+        font-weight: bold;
+        font-size: 0.75em;
+        text-align: center;
+        @include border-box;
+        @include vertical-centre(30px);
+      }
+    }
+
+    > div.employees {
+      float: left;
+      width: 100%;
+      border-top: solid 1px $border-colour;
+
+      > span.name {
+        float: left;
+        width: 5%;
+        color: $secondary-colour;
+        font-weight: bold;
+        font-size: 0.75em;
+        text-align: center;
+        @include border-box;
+        @include vertical-centre(30px);
+      }
+
+      > div.list {
+        float: left;
+        width: (95% / 3);
+
+        > a.shift {
+          float: left;
+          width: (100% / 7);
+          @include border-box;
+          border-left: solid 1px $border-colour;
+          font-size: 0.75em;
+          text-align: center;
+          @include vertical-centre(30px);
+          background: $secondary-colour;
+          color: #ffffff;
+        }
+
+        > button.shift {
+          $button-radius: 10px;
+        }
+      }
+    }
+
+    > div.week, > div.list{
+      float: left;
+      width: (95% / 3);
+      border-top: solid 1px $border-colour;
+
+      > span.day {
+        float: left;
+        width: (100% / 7);
+        @include border-box;
+        border-left: solid 1px $border-colour;
+        font-size: 0.75em;
+        text-align: center;
+        @include vertical-centre(30px);
+        background: #ffffff;
+        color: #000000;
+      }
+
+      &.names>span{
+        color: $secondary-colour;
+        font-weight: bold;
+      }
+    }
+  }
+}

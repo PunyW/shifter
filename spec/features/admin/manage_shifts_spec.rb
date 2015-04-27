@@ -8,7 +8,7 @@ feature 'AdminPanel', js: true do
       FactoryGirl.create(:work_shift)
       sign_in_capybara({ email: user.email, password: 'Admin123' })
       visit '/#/admin'
-      click_on 'Manage shifts'
+      click_on 'Shifts'
     end
 
     feature 'landing page' do

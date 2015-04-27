@@ -14,37 +14,36 @@ shifter = angular.module('shifter', [
 shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
   ($routeProvider, $httpProvider, flashProvider, USER_ROLES)->
     $routeProvider
-    .when('/',
+    .when('/'
+      templateUrl: 'main.html'
+      data: {
+        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
+      }
+    ).when('/login'
+      templateUrl: 'sessions/login.html'
+      controller: 'SessionsCtrl'
+      data: {
+        authorizedRoles: 'ALL'
+      }
+    ).when('/admin'
       templateUrl: 'admin/index.html'
       controller: 'AdminCtrl'
       data: {
         authorizedRoles: [USER_ROLES.admin]
       }
-    ).when('/login',
-      templateUrl: 'sessions/login.html',
-      controller: 'SessionsCtrl'
-      data: {
-        authorizedRoles: 'ALL'
-      }
-    ).when('/admin',
-      templateUrl: 'admin/index.html',
-      controller: 'AdminCtrl',
-      data: {
-        authorizedRoles: [USER_ROLES.admin]
-      }
-    ).when('/admin/:site',
-      templateUrl: 'admin/index.html',
+    ).when('/admin/:site'
+      templateUrl: 'admin/index.html'
       controller: 'AdminCtrl'
       data: {
         authorizedRoles: [USER_ROLES.admin]
       }
-    ).when('/admin/:site/:resourceId',
-      templateUrl: 'admin/index.html',
-      controller: 'AdminCtrl',
+    ).when('/admin/:site/:resourceId'
+      templateUrl: 'admin/index.html'
+      controller: 'AdminCtrl'
       data: {
         authorizedRoles: [USER_ROLES.admin]
       }
-    ).when('/create_user',
+    ).when('/create_user'
       templateUrl: 'sessions/createForm.html'
       controller: 'UsersCtrl'
       data: {

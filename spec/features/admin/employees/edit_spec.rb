@@ -12,6 +12,7 @@ feature 'Employee', js: true do
 
       feature 'form' do
         before do
+          visit '/#/admin/employees'
           click_on 'New employee...'
         end
 
@@ -30,6 +31,7 @@ feature 'Employee', js: true do
 
       feature 'new' do
         before do
+          visit '/#/admin/employees'
           click_on 'New employee...'
         end
         scenario 'create with valid parameters' do
@@ -49,7 +51,7 @@ feature 'Employee', js: true do
           FactoryGirl.create(:employee, first_name: 'Ganoes', last_name: 'Paron')
           visit '/#/admin/employees'
           find('.employee-list').find('ul')
-          click_on 'Ganoes Paron'
+          click_on 'Paron Ganoes'
         end
 
         scenario 'edit' do

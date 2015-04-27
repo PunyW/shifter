@@ -9,6 +9,7 @@ feature 'Looking for employees', js: true do
       Employee.create!(first_name: 'Ben', last_name: 'Quick', work_percent: 1)
       Employee.create!(first_name: 'Ganoes', last_name: 'Paron', work_percent: 1)
       sign_in_capybara({ email: user.email, password: 'Admin123'})
+      visit '/#/admin/employees'
     end
 
     scenario 'by default everyone is shown' do
@@ -21,7 +22,7 @@ feature 'Looking for employees', js: true do
     scenario 'finding employee that exists' do
       fill_in 'search', with: 'kalam'
 
-      expect(page).to have_content 'Kalam Mekhar'
+      expect(page).to have_content 'Mekhar Kalam'
     end
 
     scenario 'searching employee that doesn\'t exist' do

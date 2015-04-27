@@ -23,4 +23,5 @@
 //= require angular-strap
 //= require angular-animate
 //= require angular-validation-match
+//= require momentjs
 //= require_tree .
