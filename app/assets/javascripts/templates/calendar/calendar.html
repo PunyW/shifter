@@ -1,7 +1,7 @@
 <div>
     <div class="header">
         <i class="fa fa-angle-left" ng-click="previous()"></i>
-        <span ng-hide="part">List # </span>
+        <span ng-hide="part">List {{ currentList.number }}</span>
         <span ng-show="part">List # / part {{part}}</span>
         <i class="fa fa-angle-right" ng-click="next()"></i>
     </div>
@@ -25,7 +25,6 @@
     </div>
     <div class="employees" ng-repeat="employee in employees">
         <span class="name">{{employee.first_name}}</span>
-
         <div ng-style="{ 'width' : width }" class="list" ng-repeat="week in list">
             <a class="shift" ng-repeat="day in week.days" href data-animation="am-flip-x" bs-dropdown="shifts" aria-haspopup="true"
                     ng-click="setInformation(employee, day)" aria-expanded="false" ng-bind="getWish(employee, day)">

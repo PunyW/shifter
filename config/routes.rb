@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :employees, only: [:index, :show, :create, :update, :destroy]
     resources :work_shifts, only: [:index, :show, :update, :destroy, :create]
     resources :users, only: [:create, :update, :index]
-    resources :lists, only: [:create]
+    resources :lists, only: [:create, :index]
     resources :shift_wish, only: [:create, :update, :index]
     post 'sessions/new', to: 'sessions#create'
   end

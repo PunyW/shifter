@@ -20,4 +20,12 @@ class Employee < ActiveRecord::Base
       ''
     end
   end
+
+  def wishes
+    if shift_wishes
+      shift_wishes.pluck(:employee_id, :date_number, :month_number)
+    else
+      []
+    end
+  end
 end

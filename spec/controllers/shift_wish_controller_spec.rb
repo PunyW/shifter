@@ -50,20 +50,5 @@ RSpec.describe ShiftWishController, type: :controller do
         it { expect(wish.month_number).to eq 1 }
       end
     end
-
-    describe 'update' do
-      let(:shift_wish) { FactoryGirl.create(:shift_wish) }
-      let(:night) { FactoryGirl.create(:work_shift, name: 'Night') }
-      before do
-        xhr :put, :update, format: :json, id: shift_wish.id, shift_wish: {
-            work_shift_id: night.id
-          }
-        shift_wish.reload
-      end
-
-      it { expect(response.status).to eq 204 }
-      it { expect(shift_wish.work_shift).to eq night }
-    end
   end
-
 end
