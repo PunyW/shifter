@@ -14,7 +14,12 @@ shifter = angular.module('shifter', [
 shifter.config(['$routeProvider', '$httpProvider', 'flashProvider', 'USER_ROLES'
   ($routeProvider, $httpProvider, flashProvider, USER_ROLES)->
     $routeProvider
-    .when('/'
+    .when('/',
+      templateUrl: 'main.html'
+      data: {
+        authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]
+      }
+    ).when('/calendar'
       templateUrl: 'main.html'
       data: {
         authorizedRoles: [USER_ROLES.admin, USER_ROLES.normal]

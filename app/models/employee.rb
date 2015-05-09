@@ -1,5 +1,6 @@
 class Employee < ActiveRecord::Base
   belongs_to :user
+  has_many :shift_wishes
 
   before_save :format_percentage
 
@@ -17,6 +18,14 @@ class Employee < ActiveRecord::Base
       return "#{user.username}"
     else
       ''
+    end
+  end
+
+  def wishes
+    if shift_wishes
+      shift_wishes.pluck(:employee_id, :date_number, :month_number)
+    else
+      []
     end
   end
 end

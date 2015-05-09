@@ -37,7 +37,7 @@ RSpec.describe WorkShiftsController, type: :controller do
               start_time: '7:00',
               end_time: '14:00',
               duration: 8,
-              abbreviation: 'A'
+              short_name: 'A'
             }
         end
         let(:work_shift) { WorkShift.last }
@@ -48,7 +48,7 @@ RSpec.describe WorkShiftsController, type: :controller do
         it { expect(work_shift.start_time).to eq '7:00' }
         it { expect(work_shift.end_time).to eq '14:00' }
         it { expect(work_shift.duration).to eq 8 }
-        it { expect(work_shift.abbreviation).to eq 'A'}
+        it { expect(work_shift.short_name).to eq 'A' }
       end
 
       describe 'with invalid attributes' do
@@ -58,7 +58,8 @@ RSpec.describe WorkShiftsController, type: :controller do
               description: 'Morning shift',
               start_time: '7:00',
               end_time: '14:00',
-              duration: 8
+              duration: 8,
+              short_name: 'A'
             }
         end
 
