@@ -1,5 +1,6 @@
 class Employee < ActiveRecord::Base
   belongs_to :user
+  has_many :shift_wishes
 
   before_save :format_percentage
 

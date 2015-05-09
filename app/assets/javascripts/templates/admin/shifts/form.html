@@ -31,7 +31,7 @@
             </li>
             <li>
                 <label>Shift abbreviation<span class="required">*</span></label>
-                <input type="text" name="abbreviation" class="field-long" ng-model="shift.abbreviation" required
+                <input type="text" name="abbreviation" class="field-long" ng-model="shift.short_name" required
                        ng-class="{ 'has-error' : invalid(shiftForm, 'abbreviation') }" ng-minlength="1" ng-maxlength="3">
                 <p ng-show="invalid(shiftForm, 'abbreviation')" class="help-block">Abbreviation has to be between 1 and 3 letters long.</p>
             </li>
