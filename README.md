@@ -9,3 +9,11 @@ Rails & Angular app to schedule work shifts.
 
 [Documentations](https://punyw.github.io/shifter/#/)
 [Heroku](http://blazing-shifter.herokuapp.com/#/)
+
+Shifter is an Angular Rails app for managing works shifts.
+
+Admin account can manage employees, possible work shifts and create new lists. Admins and users can assign wishes in the calendar view.
+
+The admin log in for the demo app is 
+> email: admin@admin.com  
+> password: Admin123
