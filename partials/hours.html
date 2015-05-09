@@ -1,12 +1,12 @@
-<table>
+<table ng-repeat="month in hours">
     <thead>
         <tr>
-            <th ng-repeat="hour in hours">{{ hour.date }}</th>
+            <th ng-repeat="hour in month">{{ hour.date }}</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td ng-repeat="hour in hours"> {{ hour.hours }} hours</td>
+            <td ng-repeat="hour in month"> {{ hour.hours }} hours</td>
         </tr>
     </tbody>
 </table>
